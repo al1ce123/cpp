@@ -17,13 +17,13 @@ int main(int argc, char *argv[])
 
     std::string line;
 
-    std::ifstream ifs(filename);
+    std::ifstream ifs(filename.c_str());
     if (!ifs.is_open()) {
         std::cerr << "Failed to open the input file." << std::endl;
         return 1;
     }
 
-    std::ofstream ofs(newfilename);
+    std::ofstream ofs(newfilename.c_str());
     if (!ofs.is_open()) {
         std::cerr << "Failed to open the output file." << std::endl;
         return 1;

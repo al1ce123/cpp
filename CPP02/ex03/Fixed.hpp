@@ -11,10 +11,12 @@ class Fixed
         Fixed(Fixed const& src);
         Fixed(int const n);
         Fixed(float const n);
-        ~Fixed(void);
+        ~Fixed();
 
         float toFloat(void) const;
         int toInt(void) const;
+        int getRawBits(void) const; 
+        void setRawBits(int const raw);
 
         Fixed& operator=(Fixed const& rhs);
 
@@ -40,12 +42,11 @@ class Fixed
         // Fixed Fixed::operator++(int);
         // Fixed Fixed::operator--(int);
 
-        int getRawBits(void) const; 
-        void setRawBits(int const raw);
+
 
     private:
         int _value;
-        int const _frac = 8;
+        static int const _frac;
 };
 
 std::ostream& operator<<(std::ostream &os, Fixed const &fixed);

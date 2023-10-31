@@ -4,15 +4,10 @@ int main()
 {
     Zombie zombie;
     
-    Zombie* z1 = zombie.newZombie("Rudolphe");
-    Zombie* z2 = zombie.newZombie("Alphonse");
+    // Zombie* z1 = zombie.newZombie("Rudolphe");
+    zombie.randomChump("Alice");
 
-    // zombie.randomChump("Alphonse");
-    // zombie.randomChump("Alexandre");
-    // zombie.randomChump("Alice");
-
-    delete z1;
-    delete z2;
+    // delete z1;
 
     return 0;
 }

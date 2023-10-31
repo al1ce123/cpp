@@ -9,5 +9,5 @@ class Zombie
         Zombie* zombieHorde(int N, std::string name);
 
     private:
-        std::string name;
+        std::string _name;
 };

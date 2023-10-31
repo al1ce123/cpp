@@ -1,19 +1,24 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap()
+FragTrap::FragTrap(): ClapTrap()
 {
+	this->_hitPoints = 100;
+	this->_energyPoints= 100;
+	this->_attackDmgs = 30;
     std::cout << "(FragTrap) Default constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name): _name(name), _hitPoints(100), _energyPoints(100), _attackDmgs(30)
+FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
+	this->_hitPoints = 100;
+	this->_energyPoints= 100;
+	this->_attackDmgs = 30;
     std::cout << "(FragTrap) Secondary constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(FragTrap const& src)
+FragTrap::FragTrap(FragTrap const& src): ClapTrap(src)
 {
     std::cout << "(FragTrap) Copy constructor called" << std::endl;
-    *this = src;
 }
 
 FragTrap::~FragTrap()
@@ -28,6 +33,7 @@ FragTrap& FragTrap::operator=(FragTrap const& rhs)
     this->_hitPoints = rhs._hitPoints;
     this->_energyPoints = rhs._energyPoints;
     this->_attackDmgs = rhs._attackDmgs;
+    return *this;
 }
 
 void FragTrap::highFivesGuys(void)

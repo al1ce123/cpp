@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int Fixed::_frac = 8;
+
 Fixed::Fixed(void): _value(0)
 {
     // std::cout << "Default constructor called" << std::endl;
@@ -50,7 +52,7 @@ Fixed& Fixed::operator=(Fixed const& rhs)
 
 float Fixed::toFloat(void) const
 {
-    return (float)this->_value / (1 << this->_frac);
+    return ((float)this->_value / (float)(1 << this->_frac));
 }
 
 int Fixed::toInt(void) const
@@ -58,11 +60,11 @@ int Fixed::toInt(void) const
     return this->_value >> this->_frac;
 }
 
-// std::ostream& operator<<(std::ostream &os, Fixed const &fixed)
-// {
-// 	os << fixed.toFloat();
-// 	return (os);
-// }
+std::ostream& operator<<(std::ostream &os, Fixed const &fixed)
+{
+	os << fixed.toFloat();
+	return (os);
+}
 
 bool Fixed::operator>(Fixed rhs) const
 {
@@ -175,10 +177,6 @@ Fixed Fixed::operator/(Fixed const& rhs)
 // 	(this->_value) -=1 ;
 // 	return (temp);
 // }
-
-// https://embeddedartistry.com/blog/2018/07/12/simple-fixed-point-conversion-in-c/
-// https://www.youtube.com/watch?v=Gi-LtqUTfFo
-// https://www.youtube.com/watch?v=xXKL9YBWgCY
 
 
 

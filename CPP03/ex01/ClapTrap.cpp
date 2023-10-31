@@ -1,6 +1,4 @@
-
 #include "ClapTrap.hpp"
-
 
 ClapTrap::ClapTrap()
 {
@@ -30,16 +28,6 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& rhs)
     this->_energyPoints = rhs._energyPoints;
     this->_attackDmgs = rhs._attackDmgs;
     return *this;
-}
-
-std::string ClapTrap::getName(void) const
-{
-    return this->_name;
-}
-
-void ClapTrap::setHitPoints(int n)
-{
-    this->_hitPoints = n;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -78,5 +66,9 @@ void ClapTrap::beRepaired(unsigned int amount)
         this->_hitPoints+=amount;
         this->_energyPoints--;
     }
+}
 
+std::string ClapTrap::getName(void) const
+{
+    return this->_name;
 }

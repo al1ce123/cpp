@@ -20,20 +20,16 @@ ClapTrap::~ClapTrap()
 ClapTrap& ClapTrap::operator=(ClapTrap const& rhs)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    this ->_name = rhs.getName();
+    this ->_name = rhs._name;
+    this->_hitPoints = rhs._hitPoints;
+    this->_energyPoints = rhs._energyPoints;
+    this->_attackDmgs = rhs._attackDmgs;
     return *this;
 }
 
-//getter
 std::string ClapTrap::getName(void) const
 {
     return this->_name;
-}
-
-//setter
-void ClapTrap::setHitPoints(int n)
-{
-    this->_hitPoints = n;
 }
 
 void ClapTrap::attack(const std::string& target)
