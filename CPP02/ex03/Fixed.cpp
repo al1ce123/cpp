@@ -1,7 +1,5 @@
 #include "Fixed.hpp"
 
-const int Fixed::_frac = 8;
-
 Fixed::Fixed(void): _value(0)
 {
     // std::cout << "Default constructor called" << std::endl;
@@ -24,6 +22,7 @@ Fixed::Fixed(float const n)
 {
     // std::cout << "Float constructor called" << std::endl;
     this->_value = roundf(n * (1 << this->_frac));
+
 }
 
 Fixed::~Fixed(void)
@@ -52,7 +51,7 @@ Fixed& Fixed::operator=(Fixed const& rhs)
 
 float Fixed::toFloat(void) const
 {
-    return ((float)this->_value / (float)(1 << this->_frac));
+    return (float)this->_value / (1 << this->_frac);
 }
 
 int Fixed::toInt(void) const
@@ -116,67 +115,67 @@ Fixed Fixed::operator/(Fixed const& rhs)
     return this->toFloat() / rhs.toFloat();
 }
 
-// static Fixed& min(Fixed& fpn1, Fixed& fpn2)
-// {
-//     if (fpn1.toFloat() <= fpn2.toFloat())
-//         return fpn1;
-//     else
-//         return fpn2;
-// }
+Fixed& Fixed::min(Fixed& fpn1, Fixed& fpn2)
+{
+    if (fpn1.toFloat() <= fpn2.toFloat())
+        return fpn1;
+    else
+        return fpn2;
+}
 
-// static Fixed& min(Fixed& const fpn1, Fixed& const fpn2)
-// {
-//     if (fpn1.toFloat() <= fpn2.toFloat())
-//         return fpn1;
-//     else
-//         return fpn2;
-// }
+Fixed const& Fixed::min(Fixed const& fpn1, Fixed const& fpn2)
+{
+    if (fpn1.toFloat() <= fpn2.toFloat())
+        return fpn1;
+    else
+        return fpn2;
+}
 
-// static Fixed& max(Fixed& fpn1, Fixed& fpn2)
-// {
-//     if (fpn1.toFloat() >= fpn2.toFloat())
-//         return fpn1;
-//     else
-//         return fpn2;
-// }
+Fixed& Fixed::max(Fixed& fpn1, Fixed& fpn2)
+{
+    if (fpn1.toFloat() >= fpn2.toFloat())
+        return fpn1;
+    else
+        return fpn2;
+}
 
-// static Fixed& max(Fixed& const fpn1, Fixed& const fpn2)
-// {
-//     if (fpn1.toFloat() >= fpn2.toFloat())
-//         return fpn1;
-//     else
-//         return fpn2;
-// }
+Fixed const& Fixed::max(Fixed const& fpn1, Fixed const& fpn2)
+{
+    if (fpn1.toFloat() >= fpn2.toFloat())
+        return fpn1;
+    else
+        return fpn2;
+}
 
-// //pre
-// Fixed& Fixed::operator++(void)
-// {
-// 	this->_value += 1;
-// 	return (*this);
-// }
+//pre
+Fixed& Fixed::operator++(void)
+{
+	this->_value += 1;
+	return *this;
+}
 
-// Fixed& Fixed::operator--(void)
-// {
-// 	this->_value -= 1;
-// 	return (*this);
-// }
+Fixed& Fixed::operator--(void)
+{
+	this->_value -= 1;
+	return *this;
+}
 
-// //post
-// Fixed Fixed::operator++(int)
-// {
-// 	Fixed	temp = *this;
+//post
+Fixed Fixed::operator++(int)
+{
+	Fixed	temp = *this;
 
-// 	(this->_value) +=1 ;
-// 	return (temp);
-// }
+	this->_value += 1 ;
+	return temp;
+}
 
-// Fixed Fixed::operator--(int)
-// {
-// 	Fixed	temp = *this;
+Fixed Fixed::operator--(int)
+{
+	Fixed	temp = *this;
 
-// 	(this->_value) -=1 ;
-// 	return (temp);
-// }
+	this->_value -= 1 ;
+	return temp;
+}
 
 
 

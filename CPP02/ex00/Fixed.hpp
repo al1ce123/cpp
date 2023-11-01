@@ -15,5 +15,6 @@ class Fixed
 
     private:
         int _value;
-        int const _frac = 8;
+        static int const _frac = 8;
 };
+

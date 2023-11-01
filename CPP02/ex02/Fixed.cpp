@@ -115,7 +115,7 @@ Fixed Fixed::operator/(Fixed const& rhs)
     return this->toFloat() / rhs.toFloat();
 }
 
-static Fixed& min(Fixed& fpn1, Fixed& fpn2)
+Fixed& Fixed::min(Fixed& fpn1, Fixed& fpn2)
 {
     if (fpn1.toFloat() <= fpn2.toFloat())
         return fpn1;
@@ -123,7 +123,7 @@ static Fixed& min(Fixed& fpn1, Fixed& fpn2)
         return fpn2;
 }
 
-static Fixed& min(Fixed& const fpn1, Fixed& const fpn2)
+Fixed const& Fixed::min(Fixed const& fpn1, Fixed const& fpn2)
 {
     if (fpn1.toFloat() <= fpn2.toFloat())
         return fpn1;
@@ -131,7 +131,7 @@ static Fixed& min(Fixed& const fpn1, Fixed& const fpn2)
         return fpn2;
 }
 
-static Fixed& max(Fixed& fpn1, Fixed& fpn2)
+Fixed& Fixed::max(Fixed& fpn1, Fixed& fpn2)
 {
     if (fpn1.toFloat() >= fpn2.toFloat())
         return fpn1;
@@ -139,7 +139,7 @@ static Fixed& max(Fixed& fpn1, Fixed& fpn2)
         return fpn2;
 }
 
-static Fixed& max(Fixed& const fpn1, Fixed& const fpn2)
+Fixed const& Fixed::max(Fixed const& fpn1, Fixed const& fpn2)
 {
     if (fpn1.toFloat() >= fpn2.toFloat())
         return fpn1;
@@ -151,13 +151,13 @@ static Fixed& max(Fixed& const fpn1, Fixed& const fpn2)
 Fixed& Fixed::operator++(void)
 {
 	this->_value += 1;
-	return (*this);
+	return *this;
 }
 
 Fixed& Fixed::operator--(void)
 {
 	this->_value -= 1;
-	return (*this);
+	return *this;
 }
 
 //post
@@ -165,21 +165,17 @@ Fixed Fixed::operator++(int)
 {
 	Fixed	temp = *this;
 
-	(this->_value) +=1 ;
-	return (temp);
+	this->_value += 1 ;
+	return temp;
 }
 
 Fixed Fixed::operator--(int)
 {
 	Fixed	temp = *this;
 
-	(this->_value) -=1 ;
-	return (temp);
+	this->_value -= 1 ;
+	return temp;
 }
-
-https://embeddedartistry.com/blog/2018/07/12/simple-fixed-point-conversion-in-c/
-https://www.youtube.com/watch?v=Gi-LtqUTfFo
-https://www.youtube.com/watch?v=xXKL9YBWgCY
 
 
 
