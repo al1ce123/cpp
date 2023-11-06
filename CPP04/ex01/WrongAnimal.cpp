@@ -1,14 +1,11 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(): type("WrongAnimal")
-{
-    std::cout << "WrongAnimal default constructor called" << std::endl;
-}
 
-WrongAnimal::WrongAnimal(std::string type)
+// Constructors
+WrongAnimal::WrongAnimal()
 {
-    this->type = type;
-    std::cout << "WrongAnimal secondary constructor called" << std::endl;
+    this->type = "WrongAnimal";
+    std::cout << "WrongAnimal default constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const& src)
@@ -17,24 +14,29 @@ WrongAnimal::WrongAnimal(WrongAnimal const& src)
     *this = src;
 }
 
+// Destructor
 WrongAnimal::~WrongAnimal()
 {
     std::cout << "WrongAnimal default destructor called" << std::endl;
 }
 
+// Operator
 WrongAnimal& WrongAnimal::operator=(WrongAnimal const& rhs)
 {
-    this->type = rhs.type;
+    this->type = rhs.getType();
     std::cout << "WrongAnimal assignment operator called" << std::endl;
     return *this;
 }
 
+// Getter
+std::string WrongAnimal::getType(void) const
+{
+    return this->type;
+}
+
+// Member function
 void WrongAnimal::makeSound(void) const
 {
     std::cout << "Toads cant't talk..." << std::endl;
 }
 
-std::string WrongAnimal::getType(void) const
-{
-    return this->type;
-}

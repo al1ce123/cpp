@@ -6,15 +6,21 @@
 class WrongAnimal
 {
     public:
+        // Constructors
         WrongAnimal();
-        WrongAnimal(std::string type);
         WrongAnimal(WrongAnimal const& src);
+
+        // Destructor
         virtual ~WrongAnimal();
 
+        // Operator
         WrongAnimal& operator=(WrongAnimal const& rhs);
 
-        virtual void makeSound(void) const;
+        // Getter
         std::string getType(void) const;
+
+        // Member function
+        virtual void makeSound(void) const;
 
     protected:
         std::string type;

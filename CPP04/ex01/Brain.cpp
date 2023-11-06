@@ -1,5 +1,6 @@
 #include "Brain.hpp"
 
+// Constructors
 Brain::Brain()
 {
     std::cout << "Brain default constructor called" << std::endl;
@@ -11,11 +12,13 @@ Brain::Brain(Brain const& src)
     *this = src;
 }
 
+// Destructor
 Brain::~Brain()
 {
     std::cout << "Brain default destructor called" << std::endl;
 }
 
+// Operator
 Brain& Brain::operator=(Brain const& rhs)
 {
     std::cout << "Brain assignment operator called" << std::endl;

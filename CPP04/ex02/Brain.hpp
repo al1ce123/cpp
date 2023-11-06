@@ -6,10 +6,14 @@
 class Brain
 {
     public:
+        // Constructors
         Brain();
         Brain(Brain const& src);
+
+        // Destructor
         virtual ~Brain();
 
+        // Operator
         Brain& operator=(Brain const& rhs);
 
     protected:

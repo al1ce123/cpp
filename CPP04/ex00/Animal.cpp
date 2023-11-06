@@ -1,19 +1,9 @@
 #include "Animal.hpp"
 
+// Constructors
 Animal::Animal(): type("Animal")
 {
     std::cout << "Animal default constructor called" << std::endl;
-}
-
-Animal::Animal(std::string type)
-{
-    this->type = type;
-    std::cout << "Animal secondary constructor called" << std::endl;
-}
-
-Animal::~Animal()
-{
-    std::cout << "Animal default destructor called" << std::endl;
 }
 
 Animal::Animal(Animal const& src)
@@ -22,6 +12,13 @@ Animal::Animal(Animal const& src)
     *this = src;
 }
 
+// Destructor
+Animal::~Animal()
+{
+    std::cout << "Animal default destructor called" << std::endl;
+}
+
+// Operator
 Animal& Animal::operator=(Animal const& rhs)
 {
     this->type = rhs.type;
@@ -29,12 +26,14 @@ Animal& Animal::operator=(Animal const& rhs)
     return *this;
 }
 
-void Animal::makeSound(void) const
-{
-    std::cout << "Tardigrades cant't talk..." << std::endl;
-}
-
+// Getter
 std::string Animal::getType(void) const
 {
     return this->type;
+}
+
+// Member function
+void Animal::makeSound(void) const
+{
+    std::cout << "Tardigrades cant't talk..." << std::endl;
 }

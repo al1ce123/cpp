@@ -1,30 +1,36 @@
 #include "AMateria.hpp"
 
+// Constructors
 AMateria::AMateria()
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "AMateria default constructor called" << std::endl;
 }
 
-AMateria::AMateria(std::string const& type): type(type)
+AMateria::AMateria(std::string const& type) : _type(type)
 {
-    std::cout << "Secondary constructor called" << std::endl;
+    std::cout << "AMateria secondary constructor called" << std::endl;
 }
 
 AMateria::AMateria(AMateria const& src)
 {
-    std::cout << "Copy constructor called" << std::endl;
-    this->type = src.type;
-    *this = src;
+    std::cout << "AMateria copy constructor called" << std::endl;
+    this->_type = src.getType();
 }
 
+// Destructor
 AMateria::~AMateria()
 {
-    std::cout << "Default destructor called" << std::endl;
+    std::cout << "AMateria default destructor called" << std::endl;
 }
 
-AMateria& AMateria::operator=(AMateria const& rhs)
+// Getter
+std::string const& AMateria::getType() const
 {
-    std::cout << "Copy assignment operator called" << std::endl;
-    this->type = rhs.type;
-    return *this;
+    return this->_type;
+}
+
+// Member function
+void AMateria::use(ICharacter& target)
+{
+    (void)target;
 }

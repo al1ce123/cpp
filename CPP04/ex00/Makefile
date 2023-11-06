@@ -1,6 +1,6 @@
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS = -Wall -Wextra -Werror -fsanitize=address -std=c++98 -g
 
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
@@ -22,4 +22,4 @@ fclean: clean
 re: fclean all
 
 $(NAME): $(SRC) $(OBJ)
-	$(CXX) $(OBJ) -o $(NAME)
+	$(CXX) $(OBJ) $(CXXFLAGS) -o $(NAME)
