@@ -20,7 +20,7 @@ class WrongAnimal
         std::string getType(void) const;
 
         // Member function
-        virtual void makeSound(void) const;
+        void makeSound(void) const;
 
     protected:
         std::string type;
