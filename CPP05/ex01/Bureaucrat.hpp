@@ -2,8 +2,9 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
-class Bureaucrat // implement << operator overload
+class Bureaucrat
 {
     public:
         // Constructors
@@ -24,6 +25,7 @@ class Bureaucrat // implement << operator overload
         void validateGrade();
         void incrementGrade();
         void decrementGrade();
+        void signForm(Form f);
 
         // Exceptions
         class GradeTooHighException : public std::exception
@@ -50,5 +52,3 @@ class Bureaucrat // implement << operator overload
         const std::string   _name;
         int                 _grade;
 };
-
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs);
