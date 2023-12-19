@@ -2,7 +2,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
-SRC = Bureaucrat.cpp main.cpp
+SRC = Bureaucrat.cpp Form.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

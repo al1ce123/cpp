@@ -1,8 +1,8 @@
-#include "Form.hpp"
+#include "Form.hpp" 
 
 
 // Constructors
-Form::Form(std::string name, bool formIsSigned, int minGradeToSign, int minGradeToExecute) : _name(name), _formIsSigned(false), _minGradeToSign(minGradeToSign), _minGradeToExecute(minGradeToExecute)
+Form::Form(std::string name, int minGradeToSign, int minGradeToExecute) : _name(name), _formIsSigned(false), _minGradeToSign(minGradeToSign), _minGradeToExecute(minGradeToExecute)
 {
     std::cout << "Default constructor called for " << this->getName() << std::endl;
     this->validateGrade();
@@ -33,6 +33,27 @@ Form& Form::operator=(const Form& rhs)
 
 }
 
+// Getters
+std::string Form::getName() const
+{
+    return this->_name;
+}
+
+bool         Form::getState() const
+{
+    return this->_formIsSigned;
+}
+
+int         Form::getMinGradeToSign() const
+{
+    return this->_minGradeToSign;
+}
+
+int         Form::getMinGradeToExecute() const
+{
+    return this->_minGradeToExecute;
+}
+
 // Member functions
 void Form::validateGrade()
 {
@@ -51,4 +72,14 @@ void Form::validateGrade()
     {
         std::cerr << "Caught exception: " << e.what() << std::endl;
     }
+}
+
+bool Form::beSigned(Bureaucrat& b)
+{
+    if (b.getGrade() <= this->getMinGradeToSign())
+    {
+        this->_formIsSigned = true;
+        return true;
+    }
+    return false;
 }

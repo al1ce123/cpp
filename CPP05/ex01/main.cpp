@@ -2,17 +2,14 @@
 
 int main()
 {
-    Bureaucrat b0("Jenkins", 99);
-    Bureaucrat b1 = b0;
-    Bureaucrat b2("Sofia", 155);
-    Bureaucrat b3("Harry", 1);
-    Bureaucrat b4("Lola", 150);
+    Bureaucrat b("Alec", 78);
+    Form f("test", 789, 789);
 
-    b3.incrementGrade(); // Harry
-    b4.decrementGrade(); // Lola
+    std::cout << f.getState() << std::endl;
 
-    std::cout << b3.getGrade() << std::endl;
-    std::cout << b4.getGrade() << std::endl;
+    b.signForm(f);
+
+    std::cout << f.getState() << std::endl;
 
     return 0;
 }
