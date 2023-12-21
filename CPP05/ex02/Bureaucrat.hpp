@@ -2,9 +2,9 @@
 
 #include <iostream>
 #include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 public:
@@ -27,7 +27,7 @@ public:
     bool validateGrade(int grade) const;
     void incrementGrade();
     void decrementGrade();
-    void signForm(Form& f);
+    void signForm(AForm& f);
 
     // Exceptions
     class GradeTooHighException : public std::exception

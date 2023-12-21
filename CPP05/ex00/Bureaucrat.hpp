@@ -3,52 +3,46 @@
 #include <iostream>
 #include <string>
 
-class Bureaucrat // implement << operator overload
-{
-    public:
-        // Constructors
-        Bureaucrat(std::string name, int grade);
-        Bureaucrat(const Bureaucrat& src);
 
-        // Destructor
-        virtual ~Bureaucrat();
+class Bureaucrat {
+public:
+    // Constructors
+    Bureaucrat();
+    Bureaucrat(std::string name, int grade);
+    Bureaucrat(const Bureaucrat& src);
 
-        // Copy assignment operator
-        Bureaucrat& operator=(const Bureaucrat& rhs);
+    // Destructor
+    virtual ~Bureaucrat();
 
-        // Getters
-        std::string getName() const;
-        int         getGrade() const;
+    // Copy assignment operator overload
+    Bureaucrat& operator=(const Bureaucrat& rhs);
 
-        // Member functions
-        void validateGrade();
-        void incrementGrade();
-        void decrementGrade();
+    // Getters
+    std::string getName() const;
+    int         getGrade() const;
 
-        // Exceptions
-        class GradeTooHighException : public std::exception
-        {
-            public:
-                virtual const char* what() const throw()
-                {
-                    return ("Grade too high");
-                }
-        };
+    // Member functions
+    bool validateGrade(int grade) const;
+    void incrementGrade();
+    void decrementGrade();
 
-        class GradeTooLowException : public std::exception
-        {
-            public:
-                virtual const char* what() const throw()
-                {
-                    return ("Grade too low");
-                }
-        };
+    // Exceptions
+    class GradeTooHighException : public std::exception
+    {
+        public:
+            virtual const char* what() const throw();
+    };
 
-    protected:
-
-    private:
-        const std::string   _name;
-        int                 _grade;
+    class GradeTooLowException : public std::exception
+    {
+        public:
+            virtual const char* what() const throw();
+    };
+    
+private:
+    const std::string   _name;
+    int                 _grade;
 };
 
+// Insertion operator overload
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs);
