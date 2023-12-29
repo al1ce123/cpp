@@ -15,16 +15,6 @@ bool isInt(std::string literal) {
         if (!std::isdigit(literal[i]))
             return false;
     }
-
-    char *endptr;
-    long temp = std::strtol(literal.c_str(), &endptr ,10);
-    if (*endptr != '\0') {
-        std::cerr << "Error: Conversion failed." << '\n';
-        return false;
-    }
-
-    if (temp > MAX_INT || temp < MIN_INT)
-        return false;
     return true;
 }
 
@@ -86,5 +76,9 @@ bool specialCase(std::string literal) {
 
     } else
         return false;
+}
+
+bool isPrint(char c) {
+    return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));  
 }
 

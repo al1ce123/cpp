@@ -32,3 +32,4 @@ bool isInt(std::string literal);
 bool isFloat(std::string literal);
 bool isDouble(std::string literal);
 bool specialCase(std::string literal);
+bool isPrint(char c);
