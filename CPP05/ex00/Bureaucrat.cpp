@@ -64,11 +64,11 @@ void Bureaucrat::decrementGrade() {
 
 // Exceptions
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return ("\033[31mGrade too high\033[0m");
+    return "\033[31mGrade too high\033[0m";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return ("\033[31mGrade too low\033[0m");
+    return "\033[31mGrade too low\033[0m";
 }
 
 // Insertion operator overload
