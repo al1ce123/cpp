@@ -22,7 +22,7 @@ void ScalarConverter::convert(std::string literal) {
     if (specialCase(literal))
         return;
 
-    if (literal.size() == 12 && isPrint(literal[0])) {
+    if (literal.size() == 1 && isPrint(literal[0])) {
         std::cout << "char: " << literal[0] << '\n';
         std::cout << "int: " << static_cast<int>(literal[0]) << '\n';
         std::cout << "float: " << static_cast<float>(literal[0]) << ".0f" << '\n';
@@ -94,5 +94,7 @@ void ScalarConverter::convert(std::string literal) {
                 std::cout << '\n';
             }
         }
+        else
+            std::cout << "Impossible type conversion" << '\n';
     }
 }

@@ -3,7 +3,7 @@
 // Constructors
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) {}
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(0) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(0){
     bool isValid = this->validateGrade(grade);
     if (isValid)
         this->_grade = grade;

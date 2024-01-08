@@ -41,3 +41,11 @@ AForm* Intern::makeForm(std::string name, std::string target) {
     }
 }
 
+// Insertion operator overload
+std::ostream& operator<<(std::ostream& os, const Intern& rhs) {
+    (void)rhs;
+    os << "I SUCK... BUT I MAKE FORMS!";
+    return os;
+}
+
+

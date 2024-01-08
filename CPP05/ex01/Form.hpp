@@ -25,7 +25,7 @@ public:
     int         getMinGradeToSign() const;
     int         getMinGradeToExecute() const;
 
-    // Member function
+    // Member functions
     bool beSigned(Bureaucrat& b);
     bool validateGrade(int grade);
 
