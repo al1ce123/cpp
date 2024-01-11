@@ -2,9 +2,7 @@
 
 int main()
 {
-    Array<int> myArray(5);
-    myArray[3] = 42;
-    std::cout << myArray[3] << '\n';
-    
+    Array<int> test(5);
+
     return 0;
 }

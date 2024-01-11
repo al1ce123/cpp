@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include <cstdint>
+#include <stdint.h>
 #include "Data.hpp"
 
 class Serializer {
@@ -16,3 +16,5 @@ private:
     Serializer& operator=(const Serializer& rhs);
     virtual ~Serializer();
 };
+
+

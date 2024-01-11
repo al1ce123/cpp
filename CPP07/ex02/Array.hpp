@@ -29,6 +29,6 @@ public:
     };
 
 private:
-    unsigned int _numElem;
-    T* _myArr;
+    unsigned int    _numElem;
+    T*              _myArr;
 };
