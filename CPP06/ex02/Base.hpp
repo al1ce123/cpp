@@ -6,12 +6,13 @@
 #include "B.hpp"
 #include "C.hpp"
 
-class Base {
+class Base
+{
 public:
     virtual ~Base();
-
-    Base* generate(void);
-    virtual void identify(Base* p);
-    virtual void identify(Base& p);
 };
+
+Base* generate(void);
+void identify(Base* p);
+void identify(Base& p);
 

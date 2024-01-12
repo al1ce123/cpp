@@ -1,8 +1,12 @@
 #include "Base.hpp"
 
-Base::~Base() {}
+Base::~Base()
+{
 
-Base* Base::generate(void) {
+}
+
+Base* generate(void)
+{
     int random = (std::rand() % 3) + 1;
     Base* res;
 
@@ -20,10 +24,50 @@ Base* Base::generate(void) {
     };
 }
 
-void  Base::identify(Base* p) {
-    
+void identify(Base *p)
+{
+  if (dynamic_cast<A *>(p))
+    std::cout << "Class A" << '\n';
+  else if (dynamic_cast<B *>(p))
+    std::cout << "Class B" << '\n';
+  else if (dynamic_cast<C *>(p))
+    std::cout << "Class C" << '\n';
+  else
+    std::cout << "Unknown class" << '\n';
 }
 
-void Base::identify(Base& p) {
+void identify(Base &p)
+{
+    Base tmp;
+	
+    try
+    {
+        tmp = dynamic_cast<A &>(p);
+        (void) tmp;
+        std::cout << "Class A" << '\n';
+    }
+    catch (std::exception &e)
+    {
 
+    }
+    try
+    {
+        tmp = dynamic_cast<B &>(p);
+        (void) tmp;
+        std::cout << "Class B" << '\n';
+    } 
+    catch (std::exception &e)
+    {
+
+    }
+    try
+    {
+        tmp = dynamic_cast<C &>(p);
+        (void) tmp;
+        std::cout << "Class C" << '\n';
+    }
+    catch (std::exception &e)
+    {
+
+    }
 }

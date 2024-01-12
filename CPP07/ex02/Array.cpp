@@ -7,14 +7,11 @@ Array<T>::Array() : _numElem(0), _myArr(NULL)
 
 }
 
-template <typename T>
-Array<T>::Array(unsigned int n) : _numElem(n), _myArr(new T[n])
-{
-    for (unsigned int i = 0; i < _numElem; ++i)
-    {
-        _myArr[i] = 0;
-    }
-}
+// template <typename T>
+// Array<T>::Array(unsigned int n) : _numElem(n)
+// {
+//     this->_myArr = new T[this->_numElem];
+// }
 
 template <typename T>
 Array<T>::Array(const Array& src) : _numElem(src._numElem), _myArr(new T[src._numElem])
@@ -45,7 +42,7 @@ Array<T>& Array<T>::operator=(const Array& rhs)
 template <typename T>
 Array<T>::~Array()
 {
-    delete [] _myArr;
+    delete [] this->_myArr;
 }
 
 // Member function

@@ -9,7 +9,10 @@ class Array
 public:
     // Constructors
     Array();
-    Array(unsigned int n);
+    Array(unsigned int n) : _numElem(n)
+    {
+        this->_myArr = new T[this->_numElem];
+    }
     Array(const Array& src);
     Array& operator=(const Array& rhs);
     ~Array();
