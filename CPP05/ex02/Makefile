@@ -6,7 +6,7 @@ SRC = Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = prog
+NAME = 28B
 
 all: $(NAME)
 
@@ -16,7 +16,7 @@ all: $(NAME)
 clean:
 	rm -f $(OBJ)
 
-fclean: clean
+fclean: clean 
 	rm -f $(NAME)
 
 re: fclean all

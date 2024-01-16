@@ -18,13 +18,6 @@
 class ScalarConverter {
 public:
     static void convert(std::string literal);
-
-private:
-    ScalarConverter();
-    ScalarConverter(const ScalarConverter& src);
-    ScalarConverter& operator=(const ScalarConverter& rhs);
-
-    virtual ~ScalarConverter();
 };
 
 bool checkFractionalPart(float f);

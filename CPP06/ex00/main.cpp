@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
     if (argc == 2) {
         ScalarConverter::convert(argv[1]);
     } else {
-        std::cout << "Error: wrong number of arguments. Usage: ./convert <literal>" << '\n';
+        std::cout << "usage: ./convert <literal>" << '\n';
         return 1;
     }
 

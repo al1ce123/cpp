@@ -36,7 +36,7 @@ int         Form::getMinGradeToExecute() const {
 // Member functions
 bool Form::beSigned(Bureaucrat& b) {
 
-    if (!this->validateGrade(this->getMinGradeToSign()) || !this->validateGrade(this->getMinGradeToExecute()))
+    if (!this->validateGrade(this->getMinGradeToSign()))
         return false;
     if (b.getGrade() <= this->getMinGradeToSign() && b.getGrade() > 0) {
         this->_formIsSigned = true;

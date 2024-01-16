@@ -6,7 +6,7 @@ SRC = main.cpp Serializer.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = serialize
+NAME = serializer
 
 all: $(NAME)
 

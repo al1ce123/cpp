@@ -42,6 +42,5 @@ int main() {
 
     std::cout << b5 << std::endl;
 
-    
     return 0;
 }
