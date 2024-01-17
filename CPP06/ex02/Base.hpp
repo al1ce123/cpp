@@ -2,12 +2,10 @@
 
 #include <iostream>
 #include <string>
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include <cstdlib>
+#include <ctime>
 
-class Base
-{
+class Base {
 public:
     virtual ~Base();
 };

@@ -10,12 +10,10 @@ int main() {
     myArr.push_back(1);
     myArr.push_back(-9);
 
-    try
-    {
+    try {
         easyfind(myArr, target); 
     }
-    catch(const std::exception& e)
-    {
+    catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
 

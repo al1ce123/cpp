@@ -6,7 +6,7 @@ SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = prog
+NAME = iter
 
 all: $(NAME)
 

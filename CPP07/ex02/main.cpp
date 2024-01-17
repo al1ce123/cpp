@@ -1,5 +1,3 @@
-#include <iostream>
-#include <cstdlib>
 #include "Array.hpp"
 
 int main()

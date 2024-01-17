@@ -2,17 +2,14 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 template <typename T>
-class Array
-{
+class Array {
 public:
     // Constructors
     Array();
-    Array(unsigned int n) : _numElem(n)
-    {
-        this->_myArr = new T[this->_numElem];
-    }
+    Array(unsigned int n);
     Array(const Array& src);
     Array& operator=(const Array& rhs);
     ~Array();
@@ -25,8 +22,7 @@ public:
     const T& operator[](unsigned int index) const;
 
     // Exception
-    class IndexOutOfBounds : public std::exception
-    {
+    class IndexOutOfBounds : public std::exception {
     public:
         virtual const char* what() const throw() ;
     };

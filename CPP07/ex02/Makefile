@@ -6,7 +6,7 @@ SRC = Array.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = prog
+NAME = array
 
 all: $(NAME)
 

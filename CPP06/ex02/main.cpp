@@ -3,18 +3,14 @@
 #include "B.hpp"
 #include "C.hpp"
 
-int main(void)
-{
-	Base *base_array[10];
+int main(void) {
+	Base *test1;
 
-	for (int i = 0; i < 10; i++)
-    {
-		base_array[i] = generate();
-		std::cout << "Pointer " << i << " of array is: ";
-		identify(base_array[i]);
-		std::cout << "Reference " << i << " of array is: ";
-		identify(*base_array[i]);
-		std::cout << std::endl;
-		delete base_array[i];
-	}
+	test1 = generate();
+	identify(test1);
+	identify(*test1);
+
+	delete test1;
+
+	return 0;
 }
