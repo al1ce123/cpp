@@ -6,7 +6,7 @@ SRC = main.cpp Base.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = find_type
+NAME = real_type
 
 all: $(NAME)
 

@@ -22,4 +22,5 @@ fclean: clean
 re: fclean all
 
 $(NAME): $(SRC) $(OBJ)
-	$(CXX) $(OBJ) $(CXXFLAGS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+

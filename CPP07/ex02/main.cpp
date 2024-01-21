@@ -2,7 +2,6 @@
 
 int main()
 {
-    Array<int> test(5);
-
+    Array<int> arr(10);
     return 0;
 }

@@ -3,14 +3,24 @@
 #include "B.hpp"
 #include "C.hpp"
 
-int main(void) {
-	Base *test1;
+int main() {
+	// Base* test;
 
-	test1 = generate();
-	identify(test1);
-	identify(*test1);
+	// test = generate();
+	// identify(test);
+	// identify(*test);
 
-	delete test1;
+	// delete test;
+
+	A child;
+	Base* mother = &child;
+
+	A* child2 = dynamic_cast<A*>(mother);
+	if (child2 == NULL) {
+		std::cout << "Error" << '\n';
+	} else {
+		std::cout << "OK" << '\n';
+	}
 
 	return 0;
 }

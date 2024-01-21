@@ -2,7 +2,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
-SRC = main.cpp ScalarConverter.cpp utils.cpp
+SRC = main.cpp ScalarConverter.cpp ScalarConverter_utils.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -1,13 +1,10 @@
 #include "Array.hpp"
 
-// Constructors
 template <typename T>
 Array<T>::Array() : _numElem(0), _myArr(NULL) {}
 
 template <typename T>
-Array<T>::Array(unsigned int n) : _numElem(n) {
-    this->_myArr = new T[this->_numElem];
-}
+Array<T>::Array(unsigned int n) : _numElem(n), _myArr(new T[n]) {}
 
 template <typename T>
 Array<T>::Array(const Array& src) : _numElem(src._numElem), _myArr(new T[src._numElem]) {
@@ -35,7 +32,6 @@ Array<T>::~Array() {
     delete [] this->_myArr;
 }
 
-// Member function
 template <typename T>
 unsigned int Array<T>::size() const {
     return this->_numElem;
@@ -67,6 +63,3 @@ template <typename T>
 const char* Array<T>::IndexOutOfBounds::what() const throw()  {
     return "\033[31mIndex out of bounds\033[0m";
 }
-
-
-
