@@ -23,16 +23,14 @@ public:
     // Exceptions
     class TooManyElements : public std::exception {
     public:
-        const char* what() const throw()
-        {
+        const char* what() const throw() {
             return "Too many elements";
         }
     };
 
     class NullSpan : public std::exception {
     public:
-        const char* what() const throw()
-        {
+        const char* what() const throw() {
             return "NullSpan";
         }
     };
