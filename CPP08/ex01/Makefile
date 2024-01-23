@@ -6,7 +6,7 @@ SRC = main.cpp Span.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = prog
+NAME = span
 
 all: $(NAME)
 

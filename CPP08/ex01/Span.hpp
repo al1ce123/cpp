@@ -21,8 +21,7 @@ public:
     int            longestSpan();
 
     // Exceptions
-    class TooManyElements : public std::exception
-    {
+    class TooManyElements : public std::exception {
     public:
         const char* what() const throw()
         {
@@ -30,8 +29,7 @@ public:
         }
     };
 
-    class NullSpan : public std::exception
-    {
+    class NullSpan : public std::exception {
     public:
         const char* what() const throw()
         {
