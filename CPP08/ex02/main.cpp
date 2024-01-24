@@ -102,8 +102,6 @@ int main()
 //         std::cout << *it << " ";
 //     }
 
-//     std::cout << typeid(ms.begin()).name() << '\n';
-
 //     std::cout << ms.top() << '\n';
 
 //     return 0;
