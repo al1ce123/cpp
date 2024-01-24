@@ -63,3 +63,9 @@ int Span::longestSpan() {
     }
 }
 
+int Span::getElements(const std::size_t index) {
+    if (index < this->capacity)
+        return this->elements[index];
+    throw IndexOutOfBounds();
+}
+

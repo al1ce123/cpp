@@ -58,56 +58,53 @@ int main()
 
 
 // int main() {
-    // std::stack<int> myStack;
-    // std::vector<std::string> myVector;
+//     // std::stack<int> myStack;
+//     // std::vector<std::string> myVector;
 
-    // myVector.push_back("hola");
-    // myVector.push_back("test");
-    // myVector.push_back("Paris");
-    // myVector.push_back("Madrid");
+//     // myVector.push_back("hola");
+//     // myVector.push_back("test");
+//     // myVector.push_back("Paris");
+//     // myVector.push_back("Madrid");
 
-    // myStack.push(99);
-    // myStack.push(42);
-    // myStack.push(11);
+//     // myStack.push(99);
+//     // myStack.push(42);
+//     // myStack.push(11);
 
-    // myStack.end();
+//     // myStack.end();
 
-    // for (std::vector<std::string>::iterator it = myVector.begin(); it != myVector.end(); ++it) {
-    //     if (*it == "Paris")
-    //         *it = "London";
-    //     std::cout << *it << " ";
-    // }
-    // std::cout << '\n';
+//     // for (std::vector<std::string>::iterator it = myVector.begin(); it != myVector.end(); ++it) {
+//     //     if (*it == "Paris")
+//     //         *it = "London";
+//     //     std::cout << *it << " ";
+//     // }
+//     // std::cout << '\n';
 
-    // MutantStack<int> ms;
+//     MutantStack<int> ms;
 
-    // ms.push(99);
-    // ms.push(42);
-    // ms.push(1);
+//     ms.push(99);
+//     ms.push(42);
+//     ms.push(1);
 
+//     // MutantStack<int>::iterator it = ms.begin();
+//     // MutantStack<int>::iterator ite = ms.end();
+//     // --ite;
 
-    // std::cout << ms.getFirst() << '\n';
-    // std::cout << ms.getLast() << '\n';
+//     // std::cout << "first element addr: " << &(*it) << " value: " << *it << '\n';
+//     // std::cout << "last element addr: " << &(*ite) << " value: " << *ite << '\n';
 
+//     std::cout << ms.top() << '\n';
 
-    // int* ite = ms.end();
+//     ms.pop();
 
-    // std::cout << "Address of the first element: " << static_cast<void*>(it) << '\n';
-    // std::cout << "Address of the last element: " << static_cast<void*>(ite) << '\n';
+//     std::cout << ms.top() << '\n';
 
-    // std::cout << ms.top() << '\n';
+//     for (std::vector<int>::iterator it = ms.begin(); it != ms.end(); ++it) {
+//         std::cout << *it << " ";
+//     }
 
-    // ms.pop();
+//     std::cout << typeid(ms.begin()).name() << '\n';
 
-    // std::cout << ms.top() << '\n';
+//     std::cout << ms.top() << '\n';
 
-    // for (std::vector<int>::iterator it = ms.begin(); it != ms.end(); ++it) {
-    //     std::cout << *it << " ";
-    // }
-
-    // std::cout << typeid(ms.begin()).name() << '\n';
-
-    // std::cout << ms.top() << '\n';
-
-    // return 0;
+//     return 0;
 // }

@@ -8,7 +8,6 @@
 class Span {
 public:
     // Constructors
-    // Span();
     Span(unsigned int capacity);
     Span(const Span& src);
     Span& operator=(const Span& rhs);
@@ -17,21 +16,29 @@ public:
     // Member functions
     unsigned int    getCapacity() const;
     void            addNumber(int n);
-    int            shortestSpan();
-    int            longestSpan();
+    int             shortestSpan();
+    int             longestSpan();
+    int             getElements(const std::size_t index);
 
     // Exceptions
     class TooManyElements : public std::exception {
     public:
         const char* what() const throw() {
-            return "Too many elements";
+            return "\033[31mToo many elements\033[0m";
         }
     };
 
     class NullSpan : public std::exception {
     public:
         const char* what() const throw() {
-            return "NullSpan";
+            return "\033[31mNullSpan\033[0m";
+        }
+    };
+
+    class IndexOutOfBounds : public std::exception {
+    public:
+        const char* what() const throw() {
+            return "\033[31mIndex is out of bounds\033[0m";
         }
     };
 

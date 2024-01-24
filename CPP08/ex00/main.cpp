@@ -1,8 +1,20 @@
 #include "easyfind.hpp"
 
 int main() {
-    std::vector<int> myArr;
-    int target = -9;
+    std::list<int> myArr;
+    int target = 23;
+
+    // std::array<int, 5> myArr;
+    // int target = -8;
+
+    // myArr[0] = 5;
+    // myArr[1] = 65;
+    // myArr[2] = 55;
+    // myArr[3] = 56565;
+    // myArr[4] = 68;
+
+    // std::vector<int> myArr;
+    // int target = -8;
 
     myArr.push_back(23);
     myArr.push_back(1000);
@@ -19,3 +31,9 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+// to do: overflow on easyfind, statistics, plage d'iterateur sur l'exo 1
