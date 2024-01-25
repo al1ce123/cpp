@@ -6,7 +6,7 @@ SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = mutantstack
+NAME = ex02
 
 all: $(NAME)
 

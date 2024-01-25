@@ -2,7 +2,6 @@
 #include <string>
 #include <stack>
 #include <list>
-
 template <typename T>
 class MutantStack : public std::stack<T> {
 public:
@@ -23,6 +22,7 @@ public:
     }
 
     typedef typename std::stack<int>::container_type::iterator iterator;
+
     iterator begin() {
         return std::stack<T>::c.begin();
     }

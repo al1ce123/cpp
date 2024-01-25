@@ -2,7 +2,7 @@
 
 int main() {
     std::list<int> myArr;
-    int target = 23;
+    int target = 20;
 
     // std::array<int, 5> myArr;
     // int target = -8;
@@ -31,9 +31,5 @@ int main() {
 
     return 0;
 }
-
-
-
-
 
 // to do: overflow on easyfind, statistics, plage d'iterateur sur l'exo 1

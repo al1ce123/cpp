@@ -7,7 +7,7 @@
 class ElementNotFound : public std::exception {
 public:
     const char* what() const throw() {
-        return "Element not found";
+        return "\033[31mElement not found\033[0m";
     }
 };
 
@@ -16,7 +16,7 @@ bool easyfind(const T& c, const int& n) {
     typename T::const_iterator res = std::find(c.begin(), c.end(), n);
     if (res != c.end()) {
         typename T::size_type index = std::distance(c.begin(), res);
-        std::cout << "Element " << n << " found at index " << index << '\n';
+        std::cout << "\033[32mElement " << n << " found at index " << index << "\033[0m" << '\n';
         return true;
     } 
     else {

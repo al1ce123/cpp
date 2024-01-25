@@ -6,7 +6,7 @@ SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = easyfind
+NAME = ex00
 
 all: $(NAME)
 

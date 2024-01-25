@@ -1,30 +1,30 @@
 #include "MutantStack.hpp"
 
-int main()
-{
-    MutantStack<int> mstack;
-    mstack.push(5);
-    mstack.push(17);
-    std::cout << mstack.top() << std::endl;
-    mstack.pop();
-    std::cout << mstack.size() << std::endl;
-    mstack.push(3);
-    mstack.push(5);
-    mstack.push(737);
-    //[...]
-    mstack.push(0);
-    MutantStack<int>::iterator it = mstack.begin();
-    MutantStack<int>::iterator ite = mstack.end();
-    ++it;
-    --it;
-    while (it != ite)
-    {
-        std::cout << *it << std::endl;
-        ++it;
-    }
-    std::stack<int> s(mstack);
-    return 0;
-}
+// int main()
+// {
+//     MutantStack<int> mstack;
+//     mstack.push(5);
+//     mstack.push(17);
+//     std::cout << mstack.top() << std::endl;
+//     mstack.pop();
+//     std::cout << mstack.size() << std::endl;
+//     mstack.push(3);
+//     mstack.push(5);
+//     mstack.push(737);
+//     //[...]
+//     mstack.push(0);
+//     MutantStack<int>::iterator it = mstack.begin();
+//     MutantStack<int>::iterator ite = mstack.end();
+//     ++it;
+//     --it;
+//     while (it != ite)
+//     {
+//         std::cout << *it << std::endl;
+//         ++it;
+//     }
+//     std::stack<int> s(mstack);
+//     return 0;
+// }
 
 // int main()
 // {
@@ -57,52 +57,31 @@ int main()
 // }
 
 
-// int main() {
-//     // std::stack<int> myStack;
-//     // std::vector<std::string> myVector;
+int main() {
+    MutantStack<int> ms;
 
-//     // myVector.push_back("hola");
-//     // myVector.push_back("test");
-//     // myVector.push_back("Paris");
-//     // myVector.push_back("Madrid");
+    ms.push(99);
+    ms.push(42);
+    ms.push(1);
 
-//     // myStack.push(99);
-//     // myStack.push(42);
-//     // myStack.push(11);
+    // MutantStack<int>::iterator it = ms.begin();
+    // MutantStack<int>::iterator ite = ms.end();
+    // --ite;
 
-//     // myStack.end();
+    // std::cout << "first element addr: " << &(*it) << " value: " << *it << '\n';
+    // std::cout << "last element addr: " << &(*ite) << " value: " << *ite << '\n';
 
-//     // for (std::vector<std::string>::iterator it = myVector.begin(); it != myVector.end(); ++it) {
-//     //     if (*it == "Paris")
-//     //         *it = "London";
-//     //     std::cout << *it << " ";
-//     // }
-//     // std::cout << '\n';
+    std::cout << ms.top() << '\n';
 
-//     MutantStack<int> ms;
+    ms.pop();
 
-//     ms.push(99);
-//     ms.push(42);
-//     ms.push(1);
+    std::cout << ms.top() << '\n';
 
-//     // MutantStack<int>::iterator it = ms.begin();
-//     // MutantStack<int>::iterator ite = ms.end();
-//     // --ite;
+    for (MutantStack<int>::iterator it = ms.begin(); it != ms.end(); ++it) {
+        std::cout << *it << " ";
+    }
 
-//     // std::cout << "first element addr: " << &(*it) << " value: " << *it << '\n';
-//     // std::cout << "last element addr: " << &(*ite) << " value: " << *ite << '\n';
+    std::cout << ms.top() << '\n';
 
-//     std::cout << ms.top() << '\n';
-
-//     ms.pop();
-
-//     std::cout << ms.top() << '\n';
-
-//     for (std::vector<int>::iterator it = ms.begin(); it != ms.end(); ++it) {
-//         std::cout << *it << " ";
-//     }
-
-//     std::cout << ms.top() << '\n';
-
-//     return 0;
-// }
+    return 0;
+}

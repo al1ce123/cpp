@@ -5,6 +5,9 @@
 #include <cstdlib>
 #include <ctime>
 
+typedef std::vector<int>::iterator iterator;
+typedef std::vector<int>::const_iterator const_iterator;
+
 class Span {
 public:
     // Constructors
@@ -19,27 +22,22 @@ public:
     int             shortestSpan();
     int             longestSpan();
     int             getElements(const std::size_t index);
+    void            fillSpan(iterator begin, iterator end);
 
     // Exceptions
     class TooManyElements : public std::exception {
     public:
-        const char* what() const throw() {
-            return "\033[31mToo many elements\033[0m";
-        }
+        const char* what() const throw();
     };
 
     class NullSpan : public std::exception {
     public:
-        const char* what() const throw() {
-            return "\033[31mNullSpan\033[0m";
-        }
+        const char* what() const throw();
     };
 
     class IndexOutOfBounds : public std::exception {
     public:
-        const char* what() const throw() {
-            return "\033[31mIndex is out of bounds\033[0m";
-        }
+        const char* what() const throw();
     };
 
 private:

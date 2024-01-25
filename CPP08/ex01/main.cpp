@@ -1,8 +1,11 @@
 #include "Span.hpp"
 
 int main() {
+
+    //Fill span using addNumber()
+
     int randomNumber;
-    Span sp = Span(5);
+    Span sp(5);
     std::srand(static_cast<unsigned int>(std::time(0)));
 
     try {
@@ -28,6 +31,34 @@ int main() {
     catch (const Span::NullSpan& e) {
         std::cerr << "Error catched: " << e.what() << '\n';
     }
+
+    // Fill span using a range of iterators
+
+    std::cout << '\n';
+
+    Span sp2(10);
+    std::vector<int> values;
+
+    values.push_back(5);
+    values.push_back(5);
+    values.push_back(7);
+    values.push_back(99);
+    values.push_back(101);
+
+    iterator it = values.begin();
+
+    sp2.fillSpan(values.begin(), values.end());
+
+    for (; it != values.end(); ++it) {
+        std::cout << *it << '\n';
+    }
+
+    std::cout << '\n';
+
+    std::cout << "shortest span: " << sp2.shortestSpan() << std::endl;
+    std::cout << "longest span: " << sp2.longestSpan() << std::endl;
+
+    std::cout << '\n';
 
     return 0;
 }

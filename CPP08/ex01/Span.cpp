@@ -54,8 +54,8 @@ int Span::longestSpan() {
     if (this->numElements < 2)
         throw NullSpan();
     else {
-        std::vector<int>::const_iterator maxConstIterator = std::max_element(this->elements.begin(), this->elements.end());
-        std::vector<int>::const_iterator minConstIterator = std::min_element(this->elements.begin(), this->elements.end());
+        const_iterator maxConstIterator = std::max_element(this->elements.begin(), this->elements.end());
+        const_iterator minConstIterator = std::min_element(this->elements.begin(), this->elements.end());
         int max = *maxConstIterator;
         int min = *minConstIterator;
         int span = max - min;
@@ -69,3 +69,24 @@ int Span::getElements(const std::size_t index) {
     throw IndexOutOfBounds();
 }
 
+void Span::fillSpan(iterator begin, iterator end) {
+    std::size_t n = std::distance(begin, end);
+
+    if ((n + this->numElements) > this->capacity)
+        throw TooManyElements();
+    this->elements.insert(this->elements.begin(), begin, end);
+    this->numElements += n;
+}
+
+// Exceptions
+const char* Span::TooManyElements::what() const throw() {
+    return "\033[31mToo many elements\033[0m";
+}
+
+const char* Span::NullSpan::what() const throw() {
+    return "\033[31mNullSpan\033[0m";
+}
+
+const char* Span::IndexOutOfBounds::what() const throw() {
+    return "\033[31mIndex is out of bounds\033[0m";
+}
