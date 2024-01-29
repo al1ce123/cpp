@@ -16,11 +16,8 @@ int main(int argc, char *argv[]) {
     //     return -1;
     // }
 
-    std::map<std::string, double> db;
-
-    saveDataBase("test.txt", db);
-
-    std::cout << db["hola"] << '\n';
+    std::string line = "2011-21-03";
+    std::cout << getInputFileDate(line) << '\n';
 
     return 0;
 }
