@@ -6,12 +6,14 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
+    std::map<std::string, double> db;
 
+    saveDataBase("data.csv", db);
+    if (parseInputFile(argv[1], db) == -1) {
+        return -1;
+    }
     return 0;
 }
-
-
-
 
 
 // int main() {

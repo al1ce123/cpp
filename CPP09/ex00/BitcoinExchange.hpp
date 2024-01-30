@@ -2,12 +2,11 @@
 #include <string>
 #include <cstring>
 #include <cstdlib>
-#include <map>
 #include <fstream>
 #include <sstream>
+#include <map>
 
 #define MAX_INT 2147483647
-
 
 int         saveDataBase(std::string dbFileName, std::map<std::string,double>& db);
 std::string getDataBaseDate(std::string line);
@@ -20,4 +19,4 @@ int         getYear(std::string date);
 int         getMonth(std::string date);
 int         getDay(std::string date);
 double      fetchDataBasePrice(std::map<std::string, double> db, std::string dateToFetch);
-void        parseInputFile(std::string inputFileName);
+int         parseInputFile(std::string inputFileName, std::map<std::string, double> db);

@@ -72,12 +72,16 @@ bool        isValidLineFormat(std::string line) { // .1 returns true
         return false;
     else
         i+=2;
+    if (i >= line.size())
+        return true;
     if (line[i++] != ' ')
         return false;
     if (line[i++] != '|')
         return false;
     if (line[i++] != ' ')
         return false;
+    if (line[i] == '-')
+        i++;
     for (; i < line.size(); ++i) {
         if (line[i] == '.') {
             flag++;
@@ -228,8 +232,35 @@ double      fetchDataBasePrice(std::map<std::string, double> db, std::string dat
     return -1;
 }
 
-void        parseInputFile(std::string inputFileName) {
-    
+int         parseInputFile(std::string inputFileName, std::map<std::string, double> db) {
+    const char* dbcStr = inputFileName.c_str();
+    std::ifstream file(dbcStr);
+
+    if (!file.is_open()) {
+        std::cerr << "Error: Failed at opening the file" << '\n';
+        return -1;
+    }
+
+    double dbFilePrice = 0.0;
+    double inputFilePrice = 0.0;
+    std::string dateToFetch;
+    std::string line;
+    std::getline(file, line);
+    while (std::getline(file, line)) {
+        if (isValidLineFormat(line)) {
+            dateToFetch = getInputFileDate(line);
+            if (dateToFetch == "")
+                continue;
+            inputFilePrice = getInputFilePrice(line);
+            if (inputFilePrice == -1)
+                continue;
+            dbFilePrice = fetchDataBasePrice(db, dateToFetch);
+            if (dbFilePrice == -1)
+                continue;
+            std::cout << getInputFileDate(line) << " => " << inputFilePrice << " = "<<  inputFilePrice * dbFilePrice << '\n';
+        }
+    }
+    return 0;
 }
 
 
