@@ -1,7 +1,6 @@
 #include "BitcoinExchange.hpp"
 
-// save the db
-int saveDataBase(std::string dbFileName, std::map<std::string,double>& db) {
+int         saveDataBase(std::string dbFileName, std::map<std::string,double>& db) {
     const char* dbcStr = dbFileName.c_str();
     std::ifstream file(dbcStr);
 
@@ -11,15 +10,18 @@ int saveDataBase(std::string dbFileName, std::map<std::string,double>& db) {
     }
 
     std::string line;
-    
+    std::string date;
+    double price;
+
     std::getline(file, line);
     while (std::getline(file, line)) {
-        std::string date = getDataBaseDate(line);
-        double      price = getDataBasePrice(line);
+        date = getDataBaseDate(line);
+        price = getDataBasePrice(line);
         if (price == -1)
             continue;
         db.insert(std::pair<std::string,double>(date,price));
     }
+    file.close();
     return 0;
 }
 
@@ -31,7 +33,7 @@ std::string getDataBaseDate(std::string line) {
     return date;
 }
 
-double getDataBasePrice(std::string line) {
+double      getDataBasePrice(std::string line) {
     std::size_t pos = line.find(',');
     std::string value = line.substr(pos + 1);
 
@@ -50,46 +52,40 @@ double getDataBasePrice(std::string line) {
     return price;
 }
 
-// parse input file
-// void        parseInputFile(std::string inputFileName) {
-
-// }
-
-// .1 returns true
-bool        isValidLineFormat(std::string inputFileName) { 
+bool        isValidLineFormat(std::string line) { // .1 returns true 
     std::size_t i;
     std::size_t flag = 0;
 
     for (i = 0; i < 4; ++i) {
-        if (!isdigit(inputFileName[i]))
+        if (!isdigit(line[i]))
             return false;
     }
-    if (inputFileName[i++] != '-')
+    if (line[i++] != '-')
         return false;
-    if (!isdigit(inputFileName[i])|| !isdigit(inputFileName[i+1]))
-        return false;
-    else
-        i+=2;
-    if (inputFileName[i++] != '-')
-        return false;
-    if (!isdigit(inputFileName[i])|| !isdigit(inputFileName[i+1]))
+    if (!isdigit(line[i])|| !isdigit(line[i+1]))
         return false;
     else
         i+=2;
-    if (inputFileName[i++] != ' ')
+    if (line[i++] != '-')
         return false;
-    if (inputFileName[i++] != '|')
+    if (!isdigit(line[i])|| !isdigit(line[i+1]))
         return false;
-    if (inputFileName[i++] != ' ')
+    else
+        i+=2;
+    if (line[i++] != ' ')
         return false;
-    for (; i < inputFileName.size(); ++i) {
-        if (inputFileName[i] == '.') {
+    if (line[i++] != '|')
+        return false;
+    if (line[i++] != ' ')
+        return false;
+    for (; i < line.size(); ++i) {
+        if (line[i] == '.') {
             flag++;
             i++;
         }
         if (flag > 1)
             return false;
-        if (!isdigit(inputFileName[i]))
+        if (!isdigit(line[i]))
             return false;
     }
     return true;
@@ -105,6 +101,7 @@ std::string getInputFileDate(std::string line) {
 
     // std::cout << date << " " << "pos = " << pos << " " << date[pos] << " " << date[pos2] << '\n'; 
 
+    // check month
     if (date[pos] == '0' && date[pos2] == '0') {
         flag = 1;  
     }
@@ -119,13 +116,203 @@ std::string getInputFileDate(std::string line) {
         std::cerr << "Error: bad input => " << date << '\n';
         return "";
     }
+
+    pos += 3;
+    pos2 += 3;
+
+    // check day
+    if (date[pos] == '0' && (date[pos2] == '0' || !date[pos2])) {
+        flag = 1;  
+    }
+    else if (date[pos] > '3') {
+        flag = 1;
+    }
+    else if (date[pos] == '3' && date[pos2] > '1') {
+        flag = 1;
+    }
+    
+    if (flag) {
+        std::cerr << "Error: bad input => " << date << '\n';
+        return "";
+    }
     return date;
 }
 
-// int         getInputFilePrice(std::string line) {
+double      getInputFilePrice(std::string line) {
+    std::size_t pos = line.find_last_of(' ');
+    std::string value = line.substr(pos + 1);
+
+    const char* cStr = value.c_str();
+
+    char* endPtr;
+    double price = strtod(cStr, &endPtr);
+
+    if (*endPtr != '\0') {
+        return -1;
+    }
+    if (price > MAX_INT) {
+        std::cerr << "Error: too large a number." << '\n';
+        return -1;
+    }
+    else if (price < 0) {
+        std::cerr << "Error: not a positive number." << '\n';
+        return -1;
+
+    }
+    return price;
+}
+
+int         getYear(std::string date) {
+    std::string year = date.substr(0, 4);
+    int res = atoi(year.c_str());
+    return res;
+}
+
+int         getMonth(std::string date) {
+    std::string month = date.substr(5, 2);
+    int res = atoi(month.c_str());
+    return res;
+}
+
+int         getDay(std::string date) {
+    std::string day = date.substr(8, 2);
+    int res = atoi(day.c_str());
+    return res;  
+}
+
+double      fetchDataBasePrice(std::map<std::string, double> db, std::string dateToFetch) {
+    int y = getYear(dateToFetch);
+    int m = getMonth(dateToFetch);
+    int d = getDay(dateToFetch);
+
+    if (y < 2009 || y > 2022) {
+        std::cerr << "Error: date unavailable." << '\n';
+        return -1;
+    }
+    else if (y == 2009 && m == 1 && d == 1) {
+        std::cerr << "Error: date unavailable." << '\n';
+        return -1;
+    }
+    else if (y == 2022 && m > 3) {
+        std::cerr << "Error: date unavailable." << '\n';
+        return -1;
+    }
+    else if (y == 2022 && m == 3 && d > 9) {
+        std::cerr << "Error: date unavailable." << '\n';
+        return -1;
+    }
+
+    std::map<std::string, double>::iterator it = db.end();
+    int day;
+    std::string newDate;
+
+    while (it == db.end()) {
+        it = db.find(dateToFetch);
+        if (it != db.end()) {
+            return it->second;
+        }
+        else {
+            day = getDay(dateToFetch);
+            if (day > 1)
+                day--;
+        }
+        std::stringstream ss;
+        ss << day;
+        if (day < 9) {
+            newDate = dateToFetch.substr(0,8) + '0' + ss.str();
+        } else {
+            newDate = dateToFetch.substr(0,8) + ss.str();
+        }
+        return fetchDataBasePrice(db, newDate);
+    }
+    return -1;
+}
+
+void        parseInputFile(std::string inputFileName) {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// int         createTempDataBase(std::map<std::size_t, std::string>& temp, std::string dbFileName) {
+//     const char* dbcStr = dbFileName.c_str();
+//     std::ifstream file(dbcStr);
+
+//     if (!file.is_open()) {
+//         std::cerr << "Error: Failed at opening the file" << '\n';
+//         return -1;
+//     }
+
+//     std::string line;
+//     std::string date;
+//     std::size_t i = 0;
+
+//     std::getline(file, line);
+//     while (std::getline(file, line)) {
+//         date = getDataBaseDate(line);
+//         temp.insert(std::pair<std::size_t, std::string>(i, date));
+//         i++;
+//     }
+
+//     file.close();
+//     return 0;
+// }
+
+// double      fetchDataBasePrice(std::map<std::string, double> db, std::map<std::size_t, std::string> temp, std::string dateToFetch) {
+//     std::size_t index;
+
+//     std::map<std::size_t, std::string>::iterator it;
+//     for (it = temp.begin(); it != temp.end(); ++it) {
+
+//     }
 
 // }
 
-// double      fetchDataBasePrice(std::map<std::string, double> db, std::string date) {
-
-// }

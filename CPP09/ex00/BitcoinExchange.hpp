@@ -4,16 +4,20 @@
 #include <cstdlib>
 #include <map>
 #include <fstream>
+#include <sstream>
+
+#define MAX_INT 2147483647
 
 
-// save the db
 int         saveDataBase(std::string dbFileName, std::map<std::string,double>& db);
 std::string getDataBaseDate(std::string line);
 double      getDataBasePrice(std::string line);
-
-// parse input file
-void        parseInputFile(std::string inputFileName);
-bool        isValidLineFormat(std::string inputFileName);
+bool        isValidLineFormat(std::string line);
 std::string getInputFileDate(std::string line);
-int         getInputFilePrice(std::string line);
-
+double      getInputFilePrice(std::string line);
+// int         createTempDataBase(std::map<std::size_t, std::string>& temp, std::string dbFileName);
+int         getYear(std::string date);
+int         getMonth(std::string date);
+int         getDay(std::string date);
+double      fetchDataBasePrice(std::map<std::string, double> db, std::string dateToFetch);
+void        parseInputFile(std::string inputFileName);
