@@ -12,9 +12,12 @@ public:
     PmergeMe& operator=(const PmergeMe& rhs);
     virtual ~PmergeMe();
 
-    int     binarySearch(int target);
-    void    insertionSort();
+    int binarySearch(int target);
+    void insertionSort();
+    void binaryInsertionSort();
+    void merge(int arr[], const int l, const int m, const int r);
+    void mergeSort(int arr[], const int l, const int r);
     
-protected:
+private:
     std::vector<int> _v;
 };

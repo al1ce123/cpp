@@ -48,6 +48,7 @@ int PmergeMe::binarySearch(int target) {
     return -1;
 }
 
+// using linear search to find the location where an element should be inserted => O(N)
 void PmergeMe::insertionSort() {
     int i, j;
 
@@ -60,4 +61,17 @@ void PmergeMe::insertionSort() {
             j--;
         }
     }
+}
+
+// using binary search to find the location where an element should be inserted => O(log N)
+void PmergeMe::binaryInsertionSort() {
+
+}
+
+void PmergeMe::merge(int arr[], const int l, const int m, const int r) {
+
+}
+
+void PmergeMe::mergeSort(int arr[], const int l, const int r) {
+  
 }
