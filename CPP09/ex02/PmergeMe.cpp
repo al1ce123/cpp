@@ -31,47 +31,49 @@ PmergeMe::~PmergeMe() {
     // std::cout << "Destructor called." << '\n';
 }
 
-int PmergeMe::binarySearch(int target) {
-    int l,r,m;
-    l = 0, r = this->_v.size() - 1;
 
-    while (l <= r) {
-        m = l + (r - l) / 2;
-        if (this->_v[m] == target) {
-            return m;
-        } else if (this->_v[m] < target) {
-            l = m + 1;
+// *** ALGORITHMS ***
+
+
+// implementation for binaryInsertionSort
+int PmergeMe::binarySearch(std::vector<int> v, int N, int key) {
+    int left = 0;
+    int right = N;
+    int middle;
+
+    while (left < right) {
+        middle = floor(left + (right - left) / 2);
+        if (v[middle] <= key) {
+            left = middle + 1;
         } else {
-            r = m - 1;
+            right = middle;
         }
     }
-    return -1;
+    return left;
 }
 
-// using linear search to find the location where an element should be inserted => O(N)
-void PmergeMe::insertionSort() {
-    int i, j;
+// Insertion Sort has O(N) to find the location where an element should be inserted 
+// Binary Insertion Sort has O(log N) to find the location where an element should be inserted
+void PmergeMe::binaryInsertionSort(std::vector<int> v) {
+    std::size_t i;
+    int j, key, pos;
 
-    for (i = 1; i < (static_cast<int>(this->_v.size()) - 1); ++i) {
-        j = i;
-        while (j > 0 && this->_v[j] < this->_v[j-1]) {
-            int temp = this->_v[j];
-            this->_v[j] = this->_v[j-1];
-            this->_v[j-1] = temp;
+    for (i = 1; i < v.size(); ++i) {
+        key = v[i];
+        pos = this->binarySearch(v, i, key);
+        j = static_cast<int>(i);
+        while (j > pos) {
+            v[j] = v[j-1];
             j--;
         }
+        v[pos] = key;
     }
 }
 
-// using binary search to find the location where an element should be inserted => O(log N)
-void PmergeMe::binaryInsertionSort() {
+void PmergeMe::merge() {
 
 }
 
-void PmergeMe::merge(int arr[], const int l, const int m, const int r) {
+void PmergeMe::mergeInsertionSort() {
 
-}
-
-void PmergeMe::mergeSort(int arr[], const int l, const int r) {
-  
 }
