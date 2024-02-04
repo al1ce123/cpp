@@ -44,7 +44,13 @@ long RPN(std::string expr) {
             } else if (expr[i] == '*') {
                 s.push(nbr1 * nbr2);
             } else if (expr[i] == '/') {
-                s.push(nbr1 / nbr2);
+                if (nbr2 == 0) {
+                    std::cerr << "Error: division by 0" << '\n';
+                    return -1;
+                }
+                else {
+                    s.push(nbr1 / nbr2);
+                }
             }
         }
         if (i == (expr.size() - 1)) {

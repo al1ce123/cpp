@@ -34,8 +34,6 @@ PmergeMe::~PmergeMe() {
 
 // *** ALGORITHMS ***
 
-
-// implementation for binaryInsertionSort
 int PmergeMe::binarySearch(std::vector<int> v, int N, int key) {
     int left = 0;
     int right = N;
@@ -52,8 +50,6 @@ int PmergeMe::binarySearch(std::vector<int> v, int N, int key) {
     return left;
 }
 
-// Insertion Sort has O(N) to find the location where an element should be inserted 
-// Binary Insertion Sort has O(log N) to find the location where an element should be inserted
 void PmergeMe::binaryInsertionSort(std::vector<int> v) {
     std::size_t i;
     int j, key, pos;
@@ -74,6 +70,13 @@ void PmergeMe::merge() {
 
 }
 
-void PmergeMe::mergeInsertionSort() {
+void PmergeMe::mergeInsertionSort(std::vector<int> v, const int l, const int r) {
+    if (l >= r) {
+        return;
+    }
 
+    int m = l + (r - l) / 2;
+    mergeInsertionSort(v, l, m);
+    mergeInsertionSort(v, m + 1, r);
+    merge();
 }

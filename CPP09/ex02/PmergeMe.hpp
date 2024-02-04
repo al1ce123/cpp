@@ -19,9 +19,10 @@ public:
     int binarySearch(std::vector<int> v, int N, int key);
     void insertionSort();
     void binaryInsertionSort(std::vector<int> v);
-    void merge(std::vector<int> v, const int l, const int m, const int r);
-    void mergeSort(std::vector<int> v, const int l, const int r);
-    void mergeInsertionSort();
+    void merge();
+    void mergeInsertionSort(std::vector<int> v, const int begin, const int end);
+
+    void mergeSort();
     
 private:
     std::vector<int> _v;
