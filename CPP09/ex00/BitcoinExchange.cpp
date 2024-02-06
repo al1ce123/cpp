@@ -259,6 +259,10 @@ int         parseInputFile(std::string inputFileName, std::map<std::string, doub
                 continue;
             std::cout << getInputFileDate(line) << " => " << inputFilePrice << " = "<<  inputFilePrice * dbFilePrice << '\n';
         }
+        else {
+            if (!line.empty())
+                std::cout << "Error: wrong format" << '\n';
+        }
     }
     return 0;
 }

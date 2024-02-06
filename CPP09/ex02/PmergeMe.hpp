@@ -1,30 +1,15 @@
 #include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <algorithm>
+#include <ctime>
 #include <cstring>
-#include <cmath>
+#include <stdlib.h>
+#include <pthread.h>
 
 #include <vector>
-#include <list>
+#include <deque>
 
-class PmergeMe {
-public:
-    // PmergeMe();
-    PmergeMe(std::vector<int> v);
-    PmergeMe(const PmergeMe& src);
-    PmergeMe& operator=(const PmergeMe& rhs);
-    virtual ~PmergeMe();
+int binarySearch(const std::vector<int>& v, const int& t);
+int binarySearch(const std::deque<int>& d, const int& t);
+void mergeInsertionSort(std::vector<int>& arr);
+void mergeInsertionSort(std::deque<int>& d);
 
-    int binarySearch(std::vector<int> v, int N, int key);
-    void insertionSort();
-    void binaryInsertionSort(std::vector<int> v);
-    void merge();
-    void mergeInsertionSort(std::vector<int> v, const int begin, const int end);
-
-    void mergeSort();
     
-private:
-    std::vector<int> _v;
-    std::list<int> _l;
-};

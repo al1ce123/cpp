@@ -1,82 +1,91 @@
 #include "PmergeMe.hpp"
 
-// PmergeMe::PmergeMe() {
-//     // std::cout << "Default constructor called." << '\n';
-// }
+// using std::vector
 
-PmergeMe::PmergeMe(std::vector<int> v) : _v(v.begin(), v.end()) {
-    // std::cout << "Secondary constructor called." << '\n';
-    
-    // this->_v.resize(v.size()); resize is handled by range constructor
-    // but otherwise be sure to resize the vector first to avoid segfaults
-}
-
-PmergeMe::PmergeMe(const PmergeMe& src) {
-    // std::cout << "Copy constructor called." << '\n';
-    for (std::size_t i = 0; i < src._v.size(); ++i) {
-        _v[i] = src._v[i];
-    }
-    *this = src;
-}
-
-PmergeMe& PmergeMe::operator=(const PmergeMe& rhs) {
-    // std::cout << "Copy assignment operator called." << '\n';
-    for (std::size_t i = 0; i < rhs._v.size(); ++i) {
-        this->_v[i] = rhs._v[i];
-    }
-    return *this;
-}
-
-PmergeMe::~PmergeMe() {
-    // std::cout << "Destructor called." << '\n';
-}
-
-
-// *** ALGORITHMS ***
-
-int PmergeMe::binarySearch(std::vector<int> v, int N, int key) {
-    int left = 0;
-    int right = N;
-    int middle;
-
-    while (left < right) {
-        middle = floor(left + (right - left) / 2);
-        if (v[middle] <= key) {
-            left = middle + 1;
+int binarySearch(const std::vector<int>& v, const int& t) {
+    int l = 0;
+    int r = v.size();
+    while (l < r) {
+        int m = l + (r - l) / 2;
+        if (v[m] < t) {
+            l = m + 1;
         } else {
-            right = middle;
+            r = m;
         }
     }
-    return left;
+    return l;
 }
 
-void PmergeMe::binaryInsertionSort(std::vector<int> v) {
-    std::size_t i;
-    int j, key, pos;
-
-    for (i = 1; i < v.size(); ++i) {
-        key = v[i];
-        pos = this->binarySearch(v, i, key);
-        j = static_cast<int>(i);
-        while (j > pos) {
-            v[j] = v[j-1];
-            j--;
-        }
-        v[pos] = key;
-    }
-}
-
-void PmergeMe::merge() {
-
-}
-
-void PmergeMe::mergeInsertionSort(std::vector<int> v, const int l, const int r) {
-    if (l >= r) {
+void mergeInsertionSort(std::vector<int>& v) {
+    int n = v.size();
+    if (n <= 1)
         return;
+
+    for (int i = 0; i < n - 1; i += 2) {
+        if (v[i] > v[i + 1]) {
+            std::swap(v[i], v[i + 1]);
+        }
     }
 
-    int m = l + (r - l) / 2;
-    mergeInsertionSort(v, l, m);
-    mergeInsertionSort(v, m + 1, r);
-    merge();
+    std::vector<int> sortedSeq;
+    for (int i = 1; i < n; i += 2) {
+        sortedSeq.push_back(v[i]);
+    }
+
+    mergeInsertionSort(sortedSeq);
+
+    for (int i = 0; i < n; i += 2) {
+        int pos = binarySearch(sortedSeq, v[i]);
+        sortedSeq.insert(sortedSeq.begin() + pos, v[i]);
+    }
+    v = sortedSeq;
 }
+
+// using std::deque
+
+#include <deque>
+#include <algorithm>
+
+int binarySearch(const std::deque<int>& d, const int& t) {
+    int l = 0;
+    int r = d.size();
+    while (l < r) {
+        int m = l + (r - l) / 2;
+        if (d[m] < t) {
+            l = m + 1;
+        } else {
+            r = m;
+        }
+    }
+    return l;
+}
+
+void mergeInsertionSort(std::deque<int>& d) {
+    int n = d.size();
+    if (n <= 1)
+        return;
+
+    for (int i = 0; i < n - 1; i += 2) {
+        if (d[i] > d[i + 1]) {
+            std::swap(d[i], d[i + 1]);
+        }
+    }
+
+    std::deque<int> sortedSeq;
+    for (int i = 1; i < n; i += 2) {
+        sortedSeq.push_back(d[i]);
+    }
+
+    mergeInsertionSort(sortedSeq);
+
+    for (int i = 0; i < n; i += 2) {
+        int pos = binarySearch(sortedSeq, d[i]);
+        sortedSeq.insert(sortedSeq.begin() + pos, d[i]);
+    }
+    d = sortedSeq;
+}
+
+
+
+
+
