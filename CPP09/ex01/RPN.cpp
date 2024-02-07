@@ -22,6 +22,10 @@ long RPN(std::string expr) {
     long result;
 
     for (i = 0; i < expr.size(); ++i) {
+        if (i > 0 && std::isdigit(expr[i]) && std::isdigit(expr[i - 1])) {
+            std::cerr << "Error" << '\n';
+            return -1;
+        }
         if (!isValidToken(expr[i])) {
             std::cerr << "Error" << '\n';
             return -1;
@@ -57,6 +61,10 @@ long RPN(std::string expr) {
             result = s.top();
             s.pop();
         }
+    }
+    if (!s.empty()) {
+        std::cerr << "Error" << '\n';
+        return -1;
     }
     return result;
 }
