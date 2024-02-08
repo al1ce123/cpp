@@ -43,19 +43,19 @@ bool RPN(std::string expr) {
             s.pop();
             if (expr[i] == '+') {
                 if (((nbr1 + nbr2) > MAX_INT)) {
-                    std::cerr << "Overflow" << '\n';
+                    std::cerr << "Int Overflow" << '\n';
                     return false;
                 }
                 s.push(nbr1 + nbr2);
             } else if (expr[i] == '-') {
                 if (((nbr1 - nbr2) < MIN_INT)) {
-                    std::cerr << "Overflow" << '\n';
+                    std::cerr << "Int Overflow" << '\n';
                     return false;
                 }
                 s.push(nbr1 - nbr2);
             } else if (expr[i] == '*') {
                 if (((nbr1 * nbr2) > MAX_INT) || (nbr1 * nbr2) < MIN_INT) {
-                    std::cerr << "Overflow" << '\n';
+                    std::cerr << "Int Overflow" << '\n';
                     return false;
                 }
                 s.push(nbr1 * nbr2);
