@@ -14,17 +14,3 @@ int main(int argc, char *argv[]) {
     }
     return 0;
 }
-
-
-// int main() {
-//     std::map<std::string, double> m;
-
-//     m.insert(std::pair<std::string, double>("test",9.658));
-
-//     std::map<std::string, double>::iterator it;
-
-//     it = m.find("test");
-
-//     std::cout << it->second << '\n';
-//     return 0;
-// }

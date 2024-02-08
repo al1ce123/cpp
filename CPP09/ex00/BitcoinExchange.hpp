@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -14,7 +16,6 @@ double      getDataBasePrice(std::string line);
 bool        isValidLineFormat(std::string line);
 std::string getInputFileDate(std::string line);
 double      getInputFilePrice(std::string line);
-// int         createTempDataBase(std::map<std::size_t, std::string>& temp, std::string dbFileName);
 int         getYear(std::string date);
 int         getMonth(std::string date);
 int         getDay(std::string date);

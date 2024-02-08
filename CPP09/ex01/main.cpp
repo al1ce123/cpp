@@ -6,8 +6,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    if (RPN(argv[1]) != -1)
-        std::cout << RPN(argv[1]) << '\n';
+    RPN(argv[1]);
 
     return 0;
 }

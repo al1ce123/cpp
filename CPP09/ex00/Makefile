@@ -23,10 +23,3 @@ re: fclean all
 
 $(NAME): $(SRC) $(OBJ)
 	$(CXX) $(OBJ) $(CXXFLAGS) -o $(NAME)
-
-
-
-# EI8HT, Offset - Silk and Cologne
-# Rosalía		- Juro Que
-# Rosalía		- Aunque Es De Noche 
-# Rosalía		- Linda

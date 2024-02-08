@@ -14,27 +14,27 @@ bool isOperatorToken(char c) {
     return true;
 }
 
-long RPN(std::string expr) {
+bool RPN(std::string expr) {
     std::stack<int> s;
     std::size_t i;
     int nbr;
-    long nbr1, nbr2;
-    long result;
+    long long nbr1, nbr2;
+    long long result;
 
     for (i = 0; i < expr.size(); ++i) {
         if (i > 0 && std::isdigit(expr[i]) && std::isdigit(expr[i - 1])) {
             std::cerr << "Error" << '\n';
-            return -1;
+            return false;
         }
         if (!isValidToken(expr[i])) {
             std::cerr << "Error" << '\n';
-            return -1;
+            return false;
         } else if (isOperatorToken(expr[i]) && s.size() < 2) {
             std::cerr << "Error" << '\n';
-            return -1;
+            return false;
         }
         if (std::isdigit(expr[i])) {
-            nbr = static_cast<int>(expr[i] - '0');
+            nbr = static_cast<long long>(expr[i] - '0');
             s.push(nbr);
         } else if (isOperatorToken(expr[i])) {
             nbr2 = s.top();
@@ -42,15 +42,27 @@ long RPN(std::string expr) {
             nbr1 = s.top();
             s.pop();
             if (expr[i] == '+') {
+                if (((nbr1 + nbr2) > MAX_INT)) {
+                    std::cerr << "Overflow" << '\n';
+                    return false;
+                }
                 s.push(nbr1 + nbr2);
             } else if (expr[i] == '-') {
+                if (((nbr1 - nbr2) < MIN_INT)) {
+                    std::cerr << "Overflow" << '\n';
+                    return false;
+                }
                 s.push(nbr1 - nbr2);
             } else if (expr[i] == '*') {
+                if (((nbr1 * nbr2) > MAX_INT) || (nbr1 * nbr2) < MIN_INT) {
+                    std::cerr << "Overflow" << '\n';
+                    return false;
+                }
                 s.push(nbr1 * nbr2);
             } else if (expr[i] == '/') {
                 if (nbr2 == 0) {
-                    std::cerr << "Error: division by 0" << '\n';
-                    return -1;
+                    std::cerr << "Infinity" << '\n';
+                    return false;
                 }
                 else {
                     s.push(nbr1 / nbr2);
@@ -64,8 +76,13 @@ long RPN(std::string expr) {
     }
     if (!s.empty()) {
         std::cerr << "Error" << '\n';
-        return -1;
+        return false;
     }
-    return result;
+    if (result > MAX_INT || result < MIN_INT) {
+        std::cerr << "Overflow" << '\n';
+        return false;
+    }
+    std::cout << result << '\n';
+    return true;
 }
 

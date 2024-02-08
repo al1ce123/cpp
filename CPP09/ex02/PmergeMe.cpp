@@ -41,10 +41,27 @@ void mergeInsertionSort(std::vector<int>& v) {
     v = sortedSeq;
 }
 
-// using std::deque
+// 5 8 4 3 2 1
 
-#include <deque>
-#include <algorithm>
+// 5 8 3 4 1 2
+
+// sortedSeq: [8 4 2]
+
+// 4 8 2
+
+// 8
+
+
+
+
+
+
+
+
+
+
+
+// using std::deque
 
 int binarySearch(const std::deque<int>& d, const int& t) {
     int l = 0;
