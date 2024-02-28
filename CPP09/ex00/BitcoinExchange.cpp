@@ -1,6 +1,6 @@
 #include "BitcoinExchange.hpp"
 
-int         saveDataBase(std::string dbFileName, std::map<std::string,double>& db) {
+int saveDataBase(std::string dbFileName, std::map<std::string,double>& db) {
     const char* dbcStr = dbFileName.c_str();
     std::ifstream file(dbcStr);
 
@@ -33,7 +33,7 @@ std::string getDataBaseDate(std::string line) {
     return date;
 }
 
-double      getDataBasePrice(std::string line) {
+double getDataBasePrice(std::string line) {
     std::size_t pos = line.find(',');
     std::string value = line.substr(pos + 1);
 
@@ -52,7 +52,7 @@ double      getDataBasePrice(std::string line) {
     return price;
 }
 
-bool        isValidLineFormat(std::string line) { // .1 returns true 
+bool isValidLineFormat(std::string line) {
     std::size_t i;
     std::size_t flag = 0;
 
@@ -103,9 +103,6 @@ std::string getInputFileDate(std::string line) {
     pos = date.find('-') + 1;
     std::size_t pos2 = pos + 1;
 
-    // std::cout << date << " " << "pos = " << pos << " " << date[pos] << " " << date[pos2] << '\n'; 
-
-    // check month
     if (date[pos] == '0' && date[pos2] == '0') {
         flag = 1;  
     }
@@ -124,7 +121,6 @@ std::string getInputFileDate(std::string line) {
     pos += 3;
     pos2 += 3;
 
-    // check day
     if (date[pos] == '0' && (date[pos2] == '0' || !date[pos2])) {
         flag = 1;  
     }
@@ -142,7 +138,7 @@ std::string getInputFileDate(std::string line) {
     return date;
 }
 
-double      getInputFilePrice(std::string line) {
+double getInputFilePrice(std::string line) {
     std::size_t pos = line.find_last_of(' ');
     std::string value = line.substr(pos + 1);
 
@@ -166,25 +162,25 @@ double      getInputFilePrice(std::string line) {
     return price;
 }
 
-int         getYear(std::string date) {
+int getYear(std::string date) {
     std::string year = date.substr(0, 4);
     int res = atoi(year.c_str());
     return res;
 }
 
-int         getMonth(std::string date) {
+int getMonth(std::string date) {
     std::string month = date.substr(5, 2);
     int res = atoi(month.c_str());
     return res;
 }
 
-int         getDay(std::string date) {
+int getDay(std::string date) {
     std::string day = date.substr(8, 2);
     int res = atoi(day.c_str());
     return res;  
 }
 
-double      fetchDataBasePrice(std::map<std::string, double> db, std::string dateToFetch) {
+double fetchDataBasePrice(std::map<std::string, double> db, std::string dateToFetch) {
     int y = getYear(dateToFetch);
     int m = getMonth(dateToFetch);
     int d = getDay(dateToFetch);
@@ -232,7 +228,7 @@ double      fetchDataBasePrice(std::map<std::string, double> db, std::string dat
     return -1;
 }
 
-int         parseInputFile(std::string inputFileName, std::map<std::string, double> db) {
+int parseInputFile(std::string inputFileName, std::map<std::string, double> db) {
     const char* dbcStr = inputFileName.c_str();
     std::ifstream file(dbcStr);
 
@@ -257,7 +253,7 @@ int         parseInputFile(std::string inputFileName, std::map<std::string, doub
             dbFilePrice = fetchDataBasePrice(db, dateToFetch);
             if (dbFilePrice == -1)
                 continue;
-            std::cout << getInputFileDate(line) << " => " << inputFilePrice << " = "<<  inputFilePrice * dbFilePrice << '\n';
+            std::cout << getInputFileDate(line) << " => " << inputFilePrice << " = "<< "\033[33m" << inputFilePrice * dbFilePrice << "\033[0m" << '\n';
         }
         else {
             if (!line.empty())
@@ -266,88 +262,3 @@ int         parseInputFile(std::string inputFileName, std::map<std::string, doub
     }
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// int         createTempDataBase(std::map<std::size_t, std::string>& temp, std::string dbFileName) {
-//     const char* dbcStr = dbFileName.c_str();
-//     std::ifstream file(dbcStr);
-
-//     if (!file.is_open()) {
-//         std::cerr << "Error: Failed at opening the file" << '\n';
-//         return -1;
-//     }
-
-//     std::string line;
-//     std::string date;
-//     std::size_t i = 0;
-
-//     std::getline(file, line);
-//     while (std::getline(file, line)) {
-//         date = getDataBaseDate(line);
-//         temp.insert(std::pair<std::size_t, std::string>(i, date));
-//         i++;
-//     }
-
-//     file.close();
-//     return 0;
-// }
-
-// double      fetchDataBasePrice(std::map<std::string, double> db, std::map<std::size_t, std::string> temp, std::string dateToFetch) {
-//     std::size_t index;
-
-//     std::map<std::size_t, std::string>::iterator it;
-//     for (it = temp.begin(); it != temp.end(); ++it) {
-
-//     }
-
-// }
-

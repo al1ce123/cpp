@@ -1,7 +1,7 @@
 #include "PmergeMe.hpp"
 
-// using std::vector
 
+// Merge-insertion Sort Vector's Implementation
 int binarySearch(const std::vector<int>& v, const int& t) {
     int l = 0;
     int r = v.size();
@@ -41,28 +41,7 @@ void mergeInsertionSort(std::vector<int>& v) {
     v = sortedSeq;
 }
 
-// 5 8 4 3 2 1
-
-// 5 8 3 4 1 2
-
-// sortedSeq: [8 4 2]
-
-// 4 8 2
-
-// 8
-
-
-
-
-
-
-
-
-
-
-
-// using std::deque
-
+// Merge-insertion Sort Deque's Implementation
 int binarySearch(const std::deque<int>& d, const int& t) {
     int l = 0;
     int r = d.size();

@@ -48,8 +48,8 @@ int main(int argc, char *argv[]) {
     }
     std::cout << '\n';
 
-    std::cout << "Time to process a range of " << v.size() << " elements with  std::[vector] : " << v_res << " us" << '\n';
-    std::cout << "Time to process a range of " << d.size() << " elements with  std::[deque] : " << d_res << " us" << '\n';
+    std::cout << "Time to process a range of " << v.size() << " elements with  std::[vector] : \033[33m" << v_res << "\033[0m us" << '\n';
+    std::cout << "Time to process a range of " << d.size() << " elements with  std::[deque] : \033[33m" << d_res << "\033[0m us" << '\n';
 
     return 0;
 }

@@ -2,24 +2,26 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-int main()
-{
-    WrongAnimal Tardigrade;
-    Cat Felix;
-    Dog Napoleon;
+// int main()
+// {
+//     WrongAnimal Tardigrade;
+//     Cat Felix;
+//     Dog Napoleon;
 
-    std::cout << "\n*** TYPES ***\n" << std::endl;
-    std::cout << Tardigrade.getType() << std::endl;
-    std::cout << Felix.getType() << std::endl;
-    std::cout << Napoleon.getType() << std::endl;
+//     std::cout << "\n\033[33m*** TYPES ***\033[0m\n" << std::endl;
+//     std::cout << Tardigrade.getType() << std::endl;
+//     std::cout << Felix.getType() << std::endl;
+//     std::cout << Napoleon.getType() << std::endl;
 
-    std::cout << "\n*** SOUNDS ***\n" << std::endl;
-    Tardigrade.makeSound();
-    Felix.makeSound();
-    Napoleon.makeSound();
-    std::cout << "\n";
-}
+//     std::cout << "\n\033[33m*** SOUNDS ***\033[0m\n" << std::endl;
+//     Tardigrade.makeSound();
+//     Felix.makeSound();
+//     Napoleon.makeSound();
+//     std::cout << "\n";
+// }
 
+
+// Subject's main
 // int main()
 // {
 //     const Animal* meta = new Animal();
@@ -28,12 +30,10 @@ int main()
 
 //     std::cout << j->getType() << " " << std::endl;
 //     std::cout << i->getType() << " " << std::endl;
-//     i->makeSound(); //will output the cat sound!
+//     i->makeSound();
 //     j->makeSound();
 //     meta->makeSound();
 
-
-//     // Added to avoid memory leaks
 //     delete meta;
 //     delete j;
 //     delete i;
@@ -41,19 +41,19 @@ int main()
 //     return 0;
 // }
 
-// int main()
-// {
-//     const WrongAnimal* meta = new WrongAnimal();
-//     const WrongAnimal* i = new WrongCat();
 
-//     std::cout << i->getType() << " " << std::endl;
-//     i->makeSound(); //will output the cat sound!
-//     meta->makeSound();
+// Subject's main after replacing classes with Wrong ones
+int main()
+{
+    const WrongAnimal* meta = new WrongAnimal();
+    const WrongAnimal* i = new WrongCat();
 
+    std::cout << i->getType() << " " << std::endl;
+    i->makeSound();
+    meta->makeSound();
 
-//     // Added to avoid memory leaks
-//     delete meta;
-//     delete i;
+    delete meta;
+    delete i;
 
-//     return 0;
-// }
+    return 0;
+}
