@@ -3,18 +3,18 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-// #define SIZE 4
+#define SIZE 4
 
-int main()
-{
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+// int main()
+// {
+//     const Animal* j = new Dog();
+//     const Animal* i = new Cat();
 
-    delete j; //should not create a leak
-    delete i;
+//     delete j; //should not create a leak
+//     delete i;
 
-    return 0;
-}
+//     return 0;
+// }
 
 // int main()
 // {
@@ -28,8 +28,7 @@ int main()
 
 //     Animal* animals[SIZE];
 
-//     for (int i = 0; i < SIZE; i++)
-//     {
+//     for (int i = 0; i < SIZE; i++) {
 //         if (i % 2 == 0)
 //             animals[i] = new Dog();
 //         else
@@ -47,15 +46,16 @@ int main()
 //         delete animals[i];
 
 //     return 0;
+
 // }
 
-// int main()
-// {
+int main()
+{
 
-//     Dog basic;
-//     {
-//         Dog tmp = basic;
-//     }
+    Dog basic;
+    {
+        Dog tmp = basic;
+    }
 
-//     return 0;
-// }
+    return 0;
+}

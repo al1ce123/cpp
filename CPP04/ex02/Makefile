@@ -6,7 +6,7 @@ SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-NAME = animal
+NAME = ex02
 
 all: $(NAME)
 

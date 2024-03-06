@@ -25,5 +25,5 @@ Cat& Cat::operator=(Cat const& rhs) {
 }
 
 void Cat::makeSound(void) const {
-    std::cout << "\033[33mCats meow\033[0mC" << std::endl;
+    std::cout << "\033[33mCats meow\033[0m" << std::endl;
 }
