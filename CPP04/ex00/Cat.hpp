@@ -2,7 +2,8 @@
 
 #include "Animal.hpp"
 
-class Cat: public Animal {
+class Cat: public Animal
+{
     public:
         Cat();
         Cat(Cat const& src);

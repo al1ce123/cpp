@@ -2,7 +2,8 @@
 
 #include "WrongAnimal.hpp"
 
-class WrongCat: public WrongAnimal {
+class WrongCat: public WrongAnimal
+{
     public:
         WrongCat();
         WrongCat(WrongCat const& src);
@@ -11,4 +12,3 @@ class WrongCat: public WrongAnimal {
 
         void makeSound(void) const;
 };
-

@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog: public Animal {
+class Dog: public AAnimal
+{
     public:
         Dog();
         Dog(Dog const& src);

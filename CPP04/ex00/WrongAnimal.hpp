@@ -3,7 +3,8 @@
 #include <iostream>
 #include <string>
 
-class WrongAnimal {
+class WrongAnimal
+{
     public:
         WrongAnimal();
         WrongAnimal(WrongAnimal const& src);

@@ -3,13 +3,13 @@
 #include <iostream>
 #include <string>
 
-class Animal
+class AAnimal
 {
     public:
-        Animal();
-        Animal(Animal const& src);
-        virtual ~Animal();
-        Animal& operator=(Animal const& rhs);
+        AAnimal();
+        AAnimal(AAnimal const& src);
+        virtual ~AAnimal();
+        AAnimal& operator=(AAnimal const& rhs);
 
         std::string getType(void) const;
         virtual void makeSound(void) const = 0;
