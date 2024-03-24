@@ -3,14 +3,14 @@
 
 MateriaSource::MateriaSource()
 {
-    std::cout << "MateriaSource default constructor called" << std::endl;
+    // std::cout << "MateriaSource default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
         this->_templates[i] = 0;
 }
 
 MateriaSource::MateriaSource(MateriaSource const& src)
 {
-    std::cout << "MateriaSource copy constructor called" << std::endl;
+    // std::cout << "MateriaSource copy constructor called" << std::endl;
     for (int i = 0; i < 4; i++) {
         if (this->_templates[i])
             this->_templates[i] = src._templates[i]->clone();
@@ -19,7 +19,7 @@ MateriaSource::MateriaSource(MateriaSource const& src)
 
 MateriaSource::~MateriaSource()
 {
-    std::cout << "MateriaSource default destructor called" << std::endl;
+    // std::cout << "MateriaSource default destructor called" << std::endl;
     for (int i = 0; i < 4; i++) {
         delete this->_templates[i];
         this->_templates[i] = 0;
@@ -28,7 +28,7 @@ MateriaSource::~MateriaSource()
 
 MateriaSource& MateriaSource::operator=(MateriaSource const& rhs)
 {
-    std::cout << "MateriaSource assignment operator called" << std::endl;
+    // std::cout << "MateriaSource assignment operator called" << std::endl;
     if(this != &rhs) {
         for (int i = 0; i < 4; i++) {
             if (this->_templates[i])
@@ -43,7 +43,7 @@ void MateriaSource::learnMateria(AMateria* m)
     int i = 0;
     for (; i < 4 && this->_templates[i] != 0; i++);
     if (i < 4)
-        this->_templates[i] = m; // Intentional shallow copy
+        this->_templates[i] = m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type)

@@ -2,14 +2,14 @@
 
 Character::Character(std::string name) : _name(name)
 {
-    std::cout << "Character default constructor called" << std::endl;
+    // std::cout << "Character default constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
         this->_inventory[i] = 0;
 }
 
 Character::Character(Character const& src) : _name(src.getName())
 {
-    std::cout << "Character copy constructor called" << std::endl;
+    // std::cout << "Character copy constructor called" << std::endl;
     for (int i = 0; i < 4; i++) {
         if (src._inventory[i])
             this->_inventory[i] = src._inventory[i]->clone();
@@ -20,7 +20,7 @@ Character::Character(Character const& src) : _name(src.getName())
 
 Character::~Character()
 {
-    std::cout << "Character default destructor called" << std::endl;
+    // std::cout << "Character default destructor called" << std::endl;
     for (int i = 0; i < 4; i++) {
         delete this->_inventory[i];
         this->_inventory[i] = 0;
@@ -29,7 +29,7 @@ Character::~Character()
 
 Character& Character::operator=(Character const& rhs)
 {
-    std::cout << "Character assignment operator called" << std::endl;
+    // std::cout << "Character assignment operator called" << std::endl;
     if (this != &rhs) {
         this->_name = rhs._name;
         for (int i = 0; i < 4; i++) {
@@ -64,6 +64,11 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (idx >= 0 && idx < 4)
-        this->_inventory[idx]->use(target);
+    if (idx >= 0 && idx < 4) {
+        if (!this->_inventory[idx]) {
+            std::cout << "¯\\_(ツ)_/¯"<< '\n';
+        } else {
+            this->_inventory[idx]->use(target);
+        }
+    }
 }

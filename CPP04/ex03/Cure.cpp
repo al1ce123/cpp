@@ -2,7 +2,7 @@
 
 Cure::Cure(): AMateria("cure")
 {
-    std::cout << "Cure default constructor called" << std::endl;
+    // std::cout << "Cure default constructor called" << std::endl;
 }
 
 Cure::Cure(Cure const& src) : AMateria("cure")
@@ -12,12 +12,12 @@ Cure::Cure(Cure const& src) : AMateria("cure")
 
 Cure::~Cure()
 {
-    std::cout << "Cure default destructor called" << std::endl;
+    // std::cout << "Cure default destructor called" << std::endl;
 }
 
 Cure& Cure::operator=(Cure const& rhs)
 {
-    std::cout << "Cure assignment operator called" << std::endl;
+    // std::cout << "Cure assignment operator called" << std::endl;
     this->_type = rhs._type;
     return *this;
 }

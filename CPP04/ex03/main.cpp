@@ -6,6 +6,44 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 
+int main()
+{
+    IMateriaSource* m = new MateriaSource();
+    Ice* a = new Ice();
+    AMateria* b = new Cure();
+    AMateria* tmp;
+
+    m->learnMateria(a);
+    m->learnMateria(b);
+
+    ICharacter* luc = new Character("luc");
+
+    tmp = m->createMateria("ice");
+    luc->equip(tmp);
+
+    ICharacter* vader = new Character("vader");
+    ICharacter* copy = vader;
+
+    luc->use(0, *copy);
+
+    std::cout << '\n';
+
+    a->use(*vader);
+    b->use(*luc);
+
+    std::cout << '\n';
+
+    tmp = m->createMateria("test");
+    luc->equip(tmp);
+    luc->use(1, *vader);
+
+    delete luc;
+    delete vader;
+    delete m;
+
+    return 0;
+}
+
 // int main()
 // {
 //     IMateriaSource* src = new MateriaSource();
@@ -35,20 +73,3 @@
 
 //     return 0;
 // }
-
-int main()
-{
-    Ice* test = new Ice();
-
-    std::string res = test->getType();
-
-    std::cout << '\n';
-
-    std::cout << "test's type: "<< res << std::endl;
-
-    std::cout << '\n';
-
-    delete test;
-
-    return 0;
-}
